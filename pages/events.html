@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events — Rumi Café</title>
+<meta name="description" content="Rumi Café community events — barista days, book days, open mic nights, coffee tastings, and more." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/rumi.css">
+</head>
+<body>
+
+<nav class="nav nav-inner-page" id="nav">
+  <div class="wrap nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/logo/rumi_logo.png" alt="Rumi Café logo" style="height:52px;width:52px" />
+      <span>Rumi<small>Café · Est. 2024</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="story.html">Story</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="roots.html">Our Roots</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="events.html" style="color:var(--gold)">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html#visit" class="nav-cta">Reserve a Table</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="background-image:url('../assets/images/rumi_cafe_04.webp');background-position:center 30%">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Community · Gatherings</span>
+    <h1>Things we make<br><em>happen, together.</em></h1>
+    <p>Recurring nights and gatherings designed to slow things down and bring people in.</p>
+  </div>
+</div>
+<div class="page-hero-divider" style="background:var(--ink)">
+  <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+    <path d="M0,70 L0,40 Q120,5 260,35 Q370,58 500,18 Q600,0 700,32 Q800,60 920,18 Q1020,0 1140,38 L1280,12 L1440,28 L1440,70 Z" fill="#f9f3e8"/>
+  </svg>
+</div>
+
+<!-- EVENTS SECTION -->
+<section class="events section-pad" id="events">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="color:var(--mocha)">Community · Events</span>
+      <h2 style="color:var(--espresso)">Things we make<br><em>happen, together.</em></h2>
+      <p>Recurring nights and gatherings designed to slow things down and bring people in. Everyone's welcome — first time or fiftieth.</p>
+    </div>
+    <div class="events-grid" id="eventsGrid">
+      <article class="event reveal">
+        <div class="event-date"><span class="day">18</span><span class="month">May · Sat</span></div>
+        <h3 class="event-name">Barista Day</h3>
+        <p class="event-desc">Step behind the bar. Learn to dial in espresso, steam milk, and pour your first tulip.</p>
+        <div class="event-meta"><span>10:00 — 13:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="barista-day" data-event-name="Barista Day">RSVP</button>
+      </article>
+      <article class="event reveal d2">
+        <div class="event-date"><span class="day">22</span><span class="month">May · Wed</span></div>
+        <h3 class="event-name">Book Day</h3>
+        <p class="event-desc">Bring a book. Swap one if you want. Quiet hours, refills, a slow afternoon.</p>
+        <div class="event-meta"><span>14:00 — 18:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="book-day" data-event-name="Book Day">RSVP</button>
+      </article>
+      <article class="event reveal d3">
+        <div class="event-date"><span class="day">25</span><span class="month">May · Sat</span></div>
+        <h3 class="event-name">Open Mic Night</h3>
+        <p class="event-desc">Poetry, acoustic sets, short stories. Sign up at the counter — five minutes each.</p>
+        <div class="event-meta"><span>19:00 — 22:00</span><span>$5 at door</span></div>
+        <button class="event-rsvp-btn" data-event-id="open-mic" data-event-name="Open Mic Night">RSVP</button>
+      </article>
+      <article class="event reveal">
+        <div class="event-date"><span class="day">29</span><span class="month">May · Wed</span></div>
+        <h3 class="event-name">Coffee Tasting</h3>
+        <p class="event-desc">Three single-origin pour overs, side by side. Notes, conversation, no pressure.</p>
+        <div class="event-meta"><span>18:00 — 20:00</span><span>$15</span></div>
+        <button class="event-rsvp-btn" data-event-id="coffee-tasting" data-event-name="Coffee Tasting">RSVP</button>
+      </article>
+      <article class="event reveal d2">
+        <div class="event-date"><span class="day">01</span><span class="month">Jun · Sun</span></div>
+        <h3 class="event-name">Community Day</h3>
+        <p class="event-desc">Free coffee for the neighborhood from 8 to 11. A small thank-you, every first Sunday.</p>
+        <div class="event-meta"><span>08:00 — 11:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="community-day" data-event-name="Community Day">RSVP</button>
+      </article>
+      <article class="event reveal d3">
+        <div class="event-date"><span class="day">05</span><span class="month">Jun · Thu</span></div>
+        <h3 class="event-name">Creative Network</h3>
+        <p class="event-desc">Designers, writers, makers. Casual introductions, slow drinks, real conversation.</p>
+        <div class="event-meta"><span>18:30 — 21:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="creative-network" data-event-name="Creative Network">RSVP</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- INTERIOR STRIP -->
+<div style="height:340px;overflow:hidden">
+  <img src="../assets/images/rumi_cafe_07.webp" alt="Rumi Café interior" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.78)" />
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="../assets/logo/rumi_logo.png" alt="Rumi Café" style="filter:none;opacity:0.85" />
+      <p>A handcrafted café experience rooted in African heritage and the culture of slow coffee.</p>
+    </div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="story.html">Our Story</a></li>
+      <li><a href="roots.html">African Roots</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="events.html">Events</a></li>
+    </ul></div>
+    <div><h4>Community</h4><ul>
+      <li><a href="story.html#loyalty">Loyalty Card</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div><h4>Visit</h4><ul>
+      <li>Titan Complex, Ground Mall</li><li>Kilimani, off Chaka Road, Nairobi</li>
+      <li><a href="mailto:rumicafe123@gmail.com">rumicafe123@gmail.com</a></li>
+    </ul></div>
+  </div>
+  <div class="wrap footer-bottom"><span>© 2026 Rumi Café · All rights reserved</span><em>made slowly, with care</em></div>
+</footer>
+
+<!-- RSVP MODAL -->
+<div class="modal-overlay" id="rsvpModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="modal-close" id="rsvpModalClose">✕</button>
+    <p class="modal-eyebrow">Reserve your spot</p>
+    <h2 class="modal-title" id="rsvpEventName">Event</h2>
+    <p class="modal-sub">We'll hold a place for you. See you there.</p>
+    <form class="modal-form" id="rsvpForm" novalidate>
+      <input type="hidden" id="rsvp-event-id" name="eventId" />
+      <div class="cf-field"><label for="rsvp-name">Your name</label><input type="text" id="rsvp-name" name="name" placeholder="Your name" required /></div>
+      <div class="cf-field"><label for="rsvp-email">Email</label><input type="email" id="rsvp-email" name="email" placeholder="you@example.com" required /></div>
+      <button type="submit" class="modal-submit">Confirm RSVP →</button>
+      <p class="modal-note" id="rsvpNote"></p>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+  toggle.addEventListener('click',()=>{toggle.classList.toggle('open');links.classList.toggle('open')});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{toggle.classList.remove('open');links.classList.remove('open')}));
+})();
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(el=>el.classList.add('in'));return}
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.1});
+  els.forEach(el=>io.observe(el));
+})();
+(function(){
+  const overlay=document.getElementById('rsvpModal');
+  function open(){overlay.classList.add('open');document.body.style.overflow='hidden'}
+  function close(){overlay.classList.remove('open');document.body.style.overflow=''}
+  document.getElementById('rsvpModalClose').addEventListener('click',close);
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+  document.querySelectorAll('.event-rsvp-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.getElementById('rsvp-event-id').value=btn.dataset.eventId;
+      document.getElementById('rsvpEventName').textContent=btn.dataset.eventName;
+      document.getElementById('rsvpNote').textContent='';
+      open();
+    });
+  });
+  document.getElementById('rsvpForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const name=document.getElementById('rsvp-name').value.trim();
+    if(!name){document.getElementById('rsvpNote').textContent='Please fill in your name.';return}
+    document.getElementById('rsvpNote').textContent='Got it, '+name.split(' ')[0]+'. We\'ll save your spot — see you there.';
+    setTimeout(close,2500);
+  });
+})();
+</script>
+</body>
+</html>
