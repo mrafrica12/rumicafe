@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact & Visit — Rumi Café</title>
+<meta name="description" content="Visit Rumi Café at Titan Complex, Ground Mall, Kilimani, Nairobi. Get in touch for reservations, events, and collaborations." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/rumi.css">
+</head>
+<body>
+
+<nav class="nav nav-inner-page" id="nav">
+  <div class="wrap nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/logo/rumi_logo.png" alt="Rumi Café logo" style="height:52px;width:52px" />
+      <span>Rumi<small>Café · Est. 2024</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="story.html">Story</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="roots.html">Our Roots</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html" style="color:var(--gold)">Contact</a></li>
+    </ul>
+    <a href="contact.html#visit" class="nav-cta">Reserve a Table</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero" style="background-image:url('../assets/images/rumi_cafe_12.webp');background-position:center 40%">
+  <div class="page-hero-inner">
+    <span class="eyebrow">Get in Touch</span>
+    <h1>Say <em>hello.</em></h1>
+    <p>Reservations, events, collaborations, or just a question about the beans — we read everything.</p>
+  </div>
+</div>
+<div class="page-hero-divider" style="background:var(--ink)">
+  <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+    <path d="M0,70 L0,40 Q120,5 260,35 Q370,58 500,18 Q600,0 700,32 Q800,60 920,18 Q1020,0 1140,38 L1280,12 L1440,28 L1440,70 Z" fill="#ede0c2"/>
+  </svg>
+</div>
+
+<!-- CONTACT SECTION -->
+<section class="contact section-pad" id="contact">
+  <div class="wrap contact-inner">
+    <div class="reveal">
+      <span class="eyebrow">Get in Touch</span>
+      <h2 style="color:var(--espresso);margin-top:0.75rem">Say <em style="font-style:italic;color:var(--mocha)">hello.</em></h2>
+      <p>Whether it's a reservation, a private event, a collaboration, or just a question about the beans — we read everything and write back.</p>
+      <div class="contact-detail">
+        <a href="mailto:rumicafe123@gmail.com">rumicafe123@gmail.com</a>
+        <a href="tel:+254703426695">+254 703 426 695</a>
+        <a href="#visit">Titan Complex, Ground Mall, Kilimani, Nairobi</a>
+      </div>
+    </div>
+    <form class="contact-form reveal d2" id="contactForm" novalidate>
+      <div class="cf-row">
+        <div class="cf-field"><label for="cf-name">Name</label><input type="text" id="cf-name" name="name" placeholder="Your name" required /></div>
+        <div class="cf-field"><label for="cf-email">Email</label><input type="email" id="cf-email" name="email" placeholder="you@example.com" required /></div>
+      </div>
+      <div class="cf-field">
+        <label for="cf-type">What's this about?</label>
+        <select id="cf-type" name="type">
+          <option value="General">General question</option>
+          <option value="Reservation">Reservation</option>
+          <option value="Private Event">Private event</option>
+          <option value="Wholesale">Wholesale / beans</option>
+          <option value="Press">Press / collaboration</option>
+          <option value="Other">Something else</option>
+        </select>
+      </div>
+      <div class="cf-field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" placeholder="Write anything — we'll read it carefully." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold" style="align-self:flex-start">Send message <span class="arrow">→</span></button>
+      <p id="contactMsg"></p>
+    </form>
+  </div>
+</section>
+
+<!-- VISIT SECTION -->
+<section class="visit section-pad" id="visit" style="background:var(--paper)">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow" style="color:var(--mocha)">Visit Us</span>
+      <h2 style="color:var(--espresso)">Come <em style="font-style:italic;color:var(--mocha)">sit a while.</em></h2>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-info reveal">
+        <div class="visit-block">
+          <span class="eyebrow" style="color:var(--mocha)">Location</span>
+          <h3>Titan Complex, Ground Mall</h3>
+          <p>Kilimani, off Chaka Road, Nairobi</p>
+        </div>
+        <div class="visit-block">
+          <span class="eyebrow" style="color:var(--mocha)">Hours</span>
+          <dl class="visit-hours" style="margin-top:0.75rem">
+            <dt>Mon — Thu</dt><dd>7:00 — 19:00</dd>
+            <dt>Friday</dt><dd>7:00 — 21:00</dd>
+            <dt>Saturday</dt><dd>8:00 — 21:00</dd>
+            <dt>Sunday</dt><dd>8:00 — 17:00</dd>
+          </dl>
+        </div>
+        <div class="visit-block">
+          <span class="eyebrow" style="color:var(--mocha)">Reach Out</span>
+          <div class="visit-socials" style="margin-top:0.75rem">
+            <a href="https://instagram.com/rumicafe123" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://facebook.com/rumicafe" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://wa.me/254703426695" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://maps.google.com/?q=Titan+Complex+Kilimani+Nairobi" target="_blank" rel="noopener">Google Maps</a>
+            <a href="mailto:rumicafe123@gmail.com">rumicafe123@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="reveal d2" style="border-radius:4px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(5,12,4,0.2)">
+        <img src="../assets/images/rumi_cafe_02.webp" alt="Rumi Café exterior" style="width:100%;height:100%;min-height:400px;object-fit:cover;object-position:center" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="../assets/logo/rumi_logo.png" alt="Rumi Café" style="filter:none;opacity:0.85" />
+      <p>A handcrafted café experience rooted in African heritage and the culture of slow coffee.</p>
+    </div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="story.html">Our Story</a></li>
+      <li><a href="roots.html">African Roots</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="events.html">Events</a></li>
+    </ul></div>
+    <div><h4>Community</h4><ul>
+      <li><a href="story.html#loyalty">Loyalty Card</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div><h4>Visit</h4><ul>
+      <li>Titan Complex, Ground Mall</li><li>Kilimani, off Chaka Road, Nairobi</li>
+      <li><a href="mailto:rumicafe123@gmail.com">rumicafe123@gmail.com</a></li>
+      <li><a href="tel:+254703426695">+254 703 426 695</a></li>
+    </ul></div>
+  </div>
+  <div class="wrap footer-bottom"><span>© 2026 Rumi Café · All rights reserved</span><em>made slowly, with care</em></div>
+</footer>
+
+<script>
+(function(){
+  const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+  toggle.addEventListener('click',()=>{toggle.classList.toggle('open');links.classList.toggle('open')});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{toggle.classList.remove('open');links.classList.remove('open')}));
+})();
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(el=>el.classList.add('in'));return}
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.1});
+  els.forEach(el=>io.observe(el));
+})();
+(function(){
+  document.getElementById('contactForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const msg=document.getElementById('contactMsg'),btn=this.querySelector('button[type=submit]');
+    const name=document.getElementById('cf-name').value.trim(),email=document.getElementById('cf-email').value.trim(),message=document.getElementById('cf-message').value.trim();
+    if(!name||!email||!message){msg.textContent='Please fill in all required fields.';return}
+    btn.disabled=true;btn.textContent='Sending…';
+    msg.textContent='Message noted. We\'ll be in touch soon, '+name.split(' ')[0]+'.';
+    this.reset();btn.disabled=false;btn.innerHTML='Send message <span class="arrow">→</span>';
+  });
+})();
+</script>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/254703426695" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <span class="wa-float__tip">Chat with us on WhatsApp</span>
+  <span class="wa-float__pulse" aria-hidden="true"></span>
+  <svg class="wa-float__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+</body>
+</html>

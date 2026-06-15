@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Events — Rumi Café</title>
+<meta name="description" content="Rumi Café community events — barista days, book days, open mic nights, coffee tastings, and more." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/css/rumi.css">
+</head>
+<body>
+
+<nav class="nav nav-inner-page" id="nav">
+  <div class="wrap nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <img src="../assets/logo/rumi_logo.png" alt="Rumi Café logo" style="height:52px;width:52px" />
+      <span>Rumi<small>Café · Est. 2024</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="story.html">Story</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="roots.html">Our Roots</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="events.html" style="color:var(--gold)">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html#visit" class="nav-cta">Reserve a Table</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero events-hero" style="background-image:url('../assets/images/rumi_cafe_06.webp');background-position:center 40%">
+  <div class="page-hero::before" style="background:rgba(0,0,0,0.45)"></div>
+  <div class="page-hero-inner events-hero-inner">
+    <h1 style="color:var(--cream);font-weight:200;margin-bottom:1rem;">Something's always happening.</h1>
+    <p style="font-size:1.15rem;color:rgba(244,234,216,0.85);max-width:560px;margin:0 auto 2.5rem;line-height:1.75;">Recurring nights and community gatherings — slow, open, yours.</p>
+    <a href="https://wa.me/254703426695?text=Hi%20Rumi%2C%20please%20add%20me%20to%20the%20events%20list%20%F0%9F%93%85" target="_blank" rel="noopener" class="btn btn-gold" style="gap:0.5rem">
+      Get event reminders on WhatsApp <span style="font-size:1.1em;">→</span>
+    </a>
+  </div>
+</div>
+<div class="page-hero-divider" style="background:var(--ink)">
+  <svg viewBox="0 0 1440 70" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+    <path d="M0,70 L0,40 Q120,5 260,35 Q370,58 500,18 Q600,0 700,32 Q800,60 920,18 Q1020,0 1140,38 L1280,12 L1440,28 L1440,70 Z" fill="#f9f3e8"/>
+  </svg>
+</div>
+
+<!-- EVENTS SECTION -->
+<section class="events section-pad" id="events">
+  <div class="wrap">
+    <div class="events-grid" id="eventsGrid">
+      <!-- BARISTA DAY -->
+      <article class="event reveal">
+        <div class="event-badge">Hands-On</div>
+        <div class="event-date"><span class="day">18</span><span class="month">May · Sat</span></div>
+        <h3 class="event-name">Barista Day</h3>
+        <p class="event-host">Hosted by James, head barista</p>
+        <div class="event-recurring">Every month</div>
+        <p class="event-desc">Step behind the bar with James. You'll dial in a real espresso shot, steam your own milk, and pour a tulip before you leave. Six guests per session — intimate by design.</p>
+        <div class="event-capacity">
+          <div class="capacity-label">4 of 6 spots taken</div>
+          <div class="capacity-bar"><div class="capacity-fill" style="width:66%"></div></div>
+        </div>
+        <p class="event-loyalty">Rumi loyalty members: this counts toward your stamp card.</p>
+        <div class="event-meta"><span>10:00 — 13:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="barista-day" data-event-name="Barista Day">RSVP</button>
+      </article>
+
+      <!-- BOOK DAY -->
+      <article class="event reveal d2">
+        <div class="event-badge">Slow Afternoon</div>
+        <div class="event-date"><span class="day">22</span><span class="month">May · Wed</span></div>
+        <h3 class="event-name">Book Day</h3>
+        <p class="event-host">Curated by the Rumi team</p>
+        <div class="event-recurring">Every month</div>
+        <p class="event-desc">Bring a book. Leave with a different one if you want. Quiet hours, free refills, no agenda. The kind of afternoon Nairobi rarely makes room for.</p>
+        <div class="event-capacity">
+          <div class="capacity-label">Open to all — drop in welcome</div>
+        </div>
+        <p class="event-loyalty">Rumi loyalty members: this counts toward your stamp card.</p>
+        <div class="event-meta"><span>14:00 — 18:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="book-day" data-event-name="Book Day">RSVP</button>
+      </article>
+
+      <!-- OPEN MIC NIGHT -->
+      <article class="event reveal d3">
+        <div class="event-badge">Live & Local</div>
+        <div class="event-date"><span class="day">25</span><span class="month">May · Sat</span></div>
+        <h3 class="event-name">Open Mic Night</h3>
+        <p class="event-host">Sign up at the counter — 5 min slots</p>
+        <div class="event-recurring">Every month</div>
+        <p class="event-desc">Poetry, acoustic sets, short fiction, spoken word. Five minutes each. Sign up at the counter from 6pm. First-timers especially welcome.</p>
+        <div class="event-capacity">
+          <div class="capacity-label">Performers: 3 of 8 slots taken</div>
+          <div class="capacity-bar"><div class="capacity-fill" style="width:37.5%"></div></div>
+        </div>
+        <p class="event-loyalty">Rumi loyalty members: this counts toward your stamp card.</p>
+        <div class="event-meta"><span>19:00 — 22:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="open-mic" data-event-name="Open Mic Night">RSVP</button>
+      </article>
+
+      <!-- COFFEE TASTING -->
+      <article class="event reveal">
+        <div class="event-badge">Origin Series</div>
+        <div class="event-date"><span class="day">29</span><span class="month">May · Wed</span></div>
+        <h3 class="event-name">Coffee Tasting</h3>
+        <p class="event-host">Led by Aisha, our roaster</p>
+        <p class="event-desc">Three single-origin pour overs, side by side. Aisha walks you through the terroir, the farm, the roast. No pressure to know anything — just bring your palate.</p>
+        <div class="event-capacity">
+          <div class="capacity-label">6 of 10 spots taken</div>
+          <div class="capacity-bar"><div class="capacity-fill" style="width:60%"></div></div>
+        </div>
+        <p class="event-loyalty">Rumi loyalty members: this counts toward your stamp card.</p>
+        <div class="event-meta"><span>18:00 — 20:00</span><span>KSh 800</span></div>
+        <button class="event-rsvp-btn" data-event-id="coffee-tasting" data-event-name="Coffee Tasting">RSVP</button>
+      </article>
+
+      <!-- COMMUNITY DAY -->
+      <article class="event reveal d2">
+        <div class="event-badge">Neighbourhood</div>
+        <div class="event-date"><span class="day">01</span><span class="month">Jun · Sun</span></div>
+        <h3 class="event-name">Community Day</h3>
+        <p class="event-host">A Rumi gift to the neighbourhood</p>
+        <div class="event-recurring">Every month</div>
+        <p class="event-desc">Free coffee for the neighbourhood, 8 to 11, every first Sunday. No loyalty card needed. No catch. Just a small thank-you from us to Kilimani.</p>
+        <div class="event-capacity">
+          <div class="capacity-label">Open to all</div>
+        </div>
+        <div class="event-meta"><span>08:00 — 11:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="community-day" data-event-name="Community Day">RSVP</button>
+      </article>
+
+      <!-- CREATIVE NETWORK -->
+      <article class="event reveal d3">
+        <div class="event-badge">Makers & Doers</div>
+        <div class="event-date"><span class="day">05</span><span class="month">Jun · Thu</span></div>
+        <h3 class="event-name">Creative Network</h3>
+        <p class="event-host">Facilitated by the community</p>
+        <p class="event-desc">Designers, writers, photographers, makers. Casual introductions, slow drinks, real conversation. No pitch decks. No awkward name tags.</p>
+        <div class="event-capacity">
+          <div class="capacity-label">Open to all — drop in welcome</div>
+        </div>
+        <div class="event-meta"><span>18:30 — 21:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="creative-network" data-event-name="Creative Network">RSVP</button>
+      </article>
+
+      <!-- UPCOMING EVENTS HEADER -->
+      <div style="grid-column:1 / -1;margin-top:3rem;margin-bottom:1rem">
+        <h3 style="font-family:var(--serif);font-size:1.4rem;color:var(--espresso);font-weight:300;margin-bottom:0.5rem">Coming to Rumi</h3>
+        <p style="font-size:0.95rem;color:#6b4f3a">New gatherings shaped by and for our community. Mark your calendar.</p>
+      </div>
+
+      <!-- AFRICAN COFFEE ORIGIN NIGHT -->
+      <article class="event reveal event-upcoming">
+        <div class="event-badge-upcoming">Upcoming</div>
+        <div class="event-badge">Origin Series</div>
+        <div class="event-date"><span class="day">TBA</span><span class="month">July</span></div>
+        <h3 class="event-name">African Coffee Origin Night</h3>
+        <p class="event-host">Led by Aisha, our roaster</p>
+        <p class="event-desc">A deep dive into East African coffee heritage — Ethiopia, Kenya, Rwanda. Three farms, three stories, three cups. The continent that taught the world to drink coffee, in one evening.</p>
+        <div class="event-capacity">
+          <div class="capacity-label">Limited to 12 guests</div>
+        </div>
+        <p class="event-loyalty">Rumi loyalty members: this counts toward your stamp card.</p>
+        <div class="event-meta"><span>18:30 — 21:00</span><span>KSh 800</span></div>
+        <button class="event-rsvp-btn" data-event-id="african-origin" data-event-name="African Coffee Origin Night">RSVP</button>
+      </article>
+
+      <!-- SWAHILI POETRY EVENING -->
+      <article class="event reveal d2 event-upcoming">
+        <div class="event-badge-upcoming">Upcoming</div>
+        <div class="event-badge">Live & Local</div>
+        <div class="event-date"><span class="day">TBA</span><span class="month">July</span></div>
+        <h3 class="event-name">Swahili Poetry Evening</h3>
+        <p class="event-host">Open sign-up at the counter</p>
+        <p class="event-desc">Mashairi, prose, and spoken word in Kiswahili and English. An evening for Nairobi's writers to be heard — and for everyone else to listen slowly over a cup.</p>
+        <div class="event-capacity">
+          <div class="capacity-label">Open to all</div>
+        </div>
+        <div class="event-meta"><span>19:00 — 21:30</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="swahili-poetry" data-event-name="Swahili Poetry Evening">RSVP</button>
+      </article>
+
+      <!-- SUNDAY ENTREPRENEUR BREAKFAST -->
+      <article class="event reveal d3 event-upcoming">
+        <div class="event-badge-upcoming">Upcoming</div>
+        <div class="event-badge">Makers & Doers</div>
+        <div class="event-date"><span class="day">TBA</span><span class="month">Jul onwards</span></div>
+        <h3 class="event-name">Sunday Entrepreneur Breakfast</h3>
+        <p class="event-host">Facilitated by the community</p>
+        <div class="event-recurring">Every last Sunday</div>
+        <p class="event-desc">Founders, freelancers, side-hustlers. Early morning, slow coffee, real conversation. No agenda, no pitches — just Kilimani's builders, together before the week begins.</p>
+        <div class="event-capacity">
+          <div class="capacity-label">Open to all — drop in welcome</div>
+        </div>
+        <div class="event-meta"><span>08:00 — 10:30</span><span>Free (buy your coffee)</span></div>
+        <button class="event-rsvp-btn" data-event-id="sunday-breakfast" data-event-name="Sunday Entrepreneur Breakfast">RSVP</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF SECTION -->
+<section style="background:var(--paper);padding:clamp(5rem,10vw,9rem) 0">
+  <div class="wrap">
+    <h2 style="font-family:var(--serif);font-size:clamp(2rem,4vw,2.8rem);color:var(--espresso);font-weight:300;font-style:italic;margin-bottom:3rem;text-align:center">Last time at Rumi —</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:2.5rem">
+      <div class="quote-card reveal">
+        <blockquote style="font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--espresso);line-height:1.7;margin-bottom:1.5rem">"I came alone to Book Day. Left with two new friends and a book I'd never have picked myself."</blockquote>
+        <p style="font-size:0.85rem;color:var(--mocha);font-weight:500">— Wanjiku M., regular since January</p>
+      </div>
+      <div class="quote-card reveal d2">
+        <blockquote style="font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--espresso);line-height:1.7;margin-bottom:1.5rem">"The Coffee Tasting changed how I order. I've been a pour-over person ever since."</blockquote>
+        <p style="font-size:0.85rem;color:var(--mocha);font-weight:500">— Brian K., Kilimani</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY PITCH FORM -->
+<section style="background:var(--sand);padding:clamp(4rem,8vw,6rem) 0">
+  <div class="wrap" style="max-width:620px">
+    <h2 style="font-family:var(--serif);font-size:1.8rem;color:var(--espresso);font-weight:300;margin-bottom:0.5rem">Got an idea for a Rumi night?</h2>
+    <p style="font-size:1rem;color:#6b4f3a;line-height:1.7;margin-bottom:2.5rem">We co-create events with our community. Tell us what you'd want to show up for.</p>
+    <form class="contact-form" action="https://formspree.io/f/mwpkjvpd" method="POST">
+      <div class="cf-field">
+        <label for="pitch-name">Your name</label>
+        <input type="text" id="pitch-name" name="name" placeholder="Your name" required />
+      </div>
+      <div class="cf-field">
+        <label for="pitch-idea">Your idea</label>
+        <textarea id="pitch-idea" name="idea" placeholder="What would you want to show up for?" rows="3" required></textarea>
+      </div>
+      <div class="cf-field">
+        <label for="pitch-contact">Your email or WhatsApp</label>
+        <input type="text" id="pitch-contact" name="contact" placeholder="you@example.com or +254..." required />
+      </div>
+      <button type="submit" style="background:var(--gold);color:var(--ink);padding:1.05rem;border-radius:999px;font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;border:none;cursor:pointer;font-family:var(--sans);transition:all 0.3s;width:100%">Send your idea →</button>
+    </form>
+  </div>
+</section>
+
+<!-- INTERIOR STRIP -->
+<div style="height:340px;overflow:hidden">
+  <img src="../assets/images/rumi_cafe_07.webp" alt="Rumi Café interior" style="width:100%;height:100%;object-fit:cover;object-position:center;filter:brightness(0.78)" />
+</div>
+
+<!-- LOCATION NUDGE -->
+<div style="background:var(--paper);padding:2rem 0;text-align:center;border-top:1px solid rgba(42,18,5,0.08)">
+  <div class="wrap" style="font-size:0.9rem;color:var(--mocha)">
+    📍 Titan Complex, Ground Floor — off Chaka Road, Kilimani ·
+    <a href="https://maps.google.com/?q=Titan+Complex+Kilimani+Nairobi" target="_blank" rel="noopener" style="color:var(--gold);font-weight:500;transition:color 0.3s">Open in Maps →</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="../assets/logo/rumi_logo.png" alt="Rumi Café" style="filter:none;opacity:0.85" />
+      <p>A handcrafted café experience rooted in African heritage and the culture of slow coffee.</p>
+    </div>
+    <div><h4>Explore</h4><ul>
+      <li><a href="story.html">Our Story</a></li>
+      <li><a href="roots.html">African Roots</a></li>
+      <li><a href="drinks.html">Drinks</a></li>
+      <li><a href="menu.html">Menu</a></li>
+      <li><a href="events.html">Events</a></li>
+    </ul></div>
+    <div><h4>Community</h4><ul>
+      <li><a href="story.html#loyalty">Loyalty Card</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></div>
+    <div><h4>Visit</h4><ul>
+      <li>Titan Complex, Ground Mall</li><li>Kilimani, off Chaka Road, Nairobi</li>
+      <li><a href="mailto:rumicafe123@gmail.com">rumicafe123@gmail.com</a></li>
+    </ul></div>
+  </div>
+  <div class="wrap footer-bottom"><span>© 2026 Rumi Café · All rights reserved</span><em>made slowly, with care</em></div>
+</footer>
+
+<!-- RSVP MODAL -->
+<div class="modal-overlay" id="rsvpModal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="modal-close" id="rsvpModalClose">✕</button>
+    <p class="modal-eyebrow">Reserve your spot</p>
+    <h2 class="modal-title" id="rsvpEventName">Event</h2>
+    <p class="modal-sub">We'll hold a place for you. See you there.</p>
+    <form class="modal-form" id="rsvpForm" novalidate>
+      <input type="hidden" id="rsvp-event-id" name="eventId" />
+      <div class="cf-field"><label for="rsvp-name">Your name</label><input type="text" id="rsvp-name" name="name" placeholder="Your name" required /></div>
+      <div class="cf-field"><label for="rsvp-email">Email</label><input type="email" id="rsvp-email" name="email" placeholder="you@example.com" required /></div>
+      <button type="submit" class="modal-submit">Confirm RSVP →</button>
+      <p class="modal-note" id="rsvpNote"></p>
+    </form>
+  </div>
+</div>
+
+<script>
+(function(){
+  const toggle=document.getElementById('navToggle'),links=document.getElementById('navLinks');
+  toggle.addEventListener('click',()=>{toggle.classList.toggle('open');links.classList.toggle('open')});
+  links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{toggle.classList.remove('open');links.classList.remove('open')}));
+})();
+(function(){
+  const els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){els.forEach(el=>el.classList.add('in'));return}
+  const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:0.1});
+  els.forEach(el=>io.observe(el));
+})();
+(function(){
+  const overlay=document.getElementById('rsvpModal');
+  function open(){overlay.classList.add('open');document.body.style.overflow='hidden'}
+  function close(){overlay.classList.remove('open');document.body.style.overflow=''}
+  document.getElementById('rsvpModalClose').addEventListener('click',close);
+  overlay.addEventListener('click',e=>{if(e.target===overlay)close()});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+  document.querySelectorAll('.event-rsvp-btn').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.getElementById('rsvp-event-id').value=btn.dataset.eventId;
+      document.getElementById('rsvpEventName').textContent=btn.dataset.eventName;
+      document.getElementById('rsvpNote').textContent='';
+      open();
+    });
+  });
+  document.getElementById('rsvpForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    const name=document.getElementById('rsvp-name').value.trim();
+    if(!name){document.getElementById('rsvpNote').textContent='Please fill in your name.';return}
+    document.getElementById('rsvpNote').textContent='Got it, '+name.split(' ')[0]+'. We\'ll save your spot — see you there.';
+    setTimeout(close,2500);
+  });
+})();
+</script>
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/254703426695" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <span class="wa-float__tip">Chat with us on WhatsApp</span>
+  <span class="wa-float__pulse" aria-hidden="true"></span>
+  <svg class="wa-float__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+</body>
+</html>

@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rumi Café — Admin Portal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper:        #f1e6d2;
+  --paper-soft:   #ede0c8;
+  --cream:        #f7efe0;
+  --mocha:        #b08968;
+  --mocha-deep:   #8a6646;
+  --espresso:     #4a2c1a;
+  --espresso-ink: #3a2113;
+  --roast:        #2a1810;
+  --line:         rgba(74,44,26,.18);
+  --line-soft:    rgba(74,44,26,.08);
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Inter', system-ui, sans-serif;
+  --hand:  'Caveat', cursive;
+  --ok:     #3d6b4a;
+  --ok-bg:  #e4ede8;
+  --warn:   #8a6220;
+  --warn-bg:#f0e8d0;
+  --low:    #8a2d1d;
+  --low-bg: #f0ddd8;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;-webkit-font-smoothing:antialiased}
+body{
+  font-family:var(--sans);background:var(--paper);
+  color:var(--espresso-ink);line-height:1.6;min-height:100vh;
+  background-image:
+    radial-gradient(rgba(74,44,26,.03) 1px, transparent 1px),
+    linear-gradient(180deg,var(--paper),var(--paper-soft));
+  background-size:4px 4px,100% 100%;
+}
+
+/* ── LOGIN ───────────────────────────────── */
+.login-gate{
+  position:fixed;inset:0;z-index:100;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(241,230,210,.97);backdrop-filter:blur(8px);
+  padding:1.5rem;
+}
+.login-card{
+  width:min(440px,100%);background:var(--cream);
+  border:1px solid var(--line);border-radius:18px;
+  padding:2.5rem;box-shadow:0 40px 80px -30px rgba(74,44,26,.5);
+}
+.login-logo{display:flex;align-items:center;gap:.75rem;margin-bottom:2rem}
+.login-logo img{width:48px;height:48px;object-fit:contain}
+.login-logo-text{font-family:var(--serif);font-size:1.35rem;color:var(--espresso)}
+.login-logo-text small{display:block;font-family:var(--sans);font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mocha-deep);margin-top:-2px}
+.login-title{font-family:var(--serif);font-size:2.4rem;font-weight:300;color:var(--espresso);margin-bottom:.4rem}
+.login-sub{font-size:.92rem;color:#6b4f3a;margin-bottom:1.75rem}
+
+/* ── APP SHELL ───────────────────────────── */
+.app{display:grid;grid-template-columns:256px 1fr;min-height:100vh}
+
+/* ── SIDEBAR ─────────────────────────────── */
+.sidebar{
+  background:var(--espresso);color:var(--cream);
+  display:flex;flex-direction:column;
+  position:sticky;top:0;height:100vh;overflow-y:auto;
+}
+.sidebar-logo{display:flex;align-items:center;gap:.75rem;padding:1.5rem 1.5rem 1.25rem;border-bottom:1px solid rgba(247,239,224,.1)}
+.sidebar-logo img{width:38px;height:38px;object-fit:contain;filter:invert(1) brightness(.9) sepia(.2)}
+.sidebar-logo-text{font-family:var(--serif);font-size:1.15rem;color:var(--cream)}
+.sidebar-logo-text small{display:block;font-family:var(--sans);font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:#d4b896;margin-top:-2px}
+.sidebar-nav{padding:1.25rem 0;flex:1}
+.sidebar-section{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;color:#7a6248;padding:.75rem 1.5rem .35rem;margin-top:.5rem}
+.sidebar-link{
+  display:flex;align-items:center;gap:.75rem;padding:.72rem 1.5rem;
+  font-size:.84rem;color:#d4b896;cursor:pointer;
+  border:none;background:none;font-family:var(--sans);width:100%;
+  text-align:left;transition:all .2s ease;
+  border-left:2.5px solid transparent;
+}
+.sidebar-link:hover{color:var(--cream);background:rgba(247,239,224,.06)}
+.sidebar-link.active{color:var(--cream);background:rgba(247,239,224,.1);border-left-color:#d4b896}
+.sidebar-link .ico{font-size:1rem;width:1.2rem;text-align:center;opacity:.8}
+.sidebar-link .badge{margin-left:auto;background:#8a2d1d;color:#f7efe0;font-size:.62rem;border-radius:999px;padding:.1rem .5rem;font-weight:700}
+.sidebar-footer{padding:1.25rem 1.5rem;border-top:1px solid rgba(247,239,224,.1);display:flex;gap:.75rem;align-items:center}
+.sidebar-footer button,.sidebar-footer a{background:none;border:none;font-family:var(--sans);font-size:.78rem;color:#8a7256;cursor:pointer;text-decoration:none;transition:color .2s}
+.sidebar-footer button:hover,.sidebar-footer a:hover{color:#d4b896}
+.sidebar-footer-sep{color:#5a4030}
+
+/* ── MAIN ────────────────────────────────── */
+.main{padding:2rem clamp(1.25rem,3vw,2.25rem);min-height:100vh}
+
+/* ── PAGES ───────────────────────────────── */
+.page{display:none}
+.page.active{display:block}
+.page-hd{margin-bottom:1.75rem;padding-bottom:1.5rem;border-bottom:1px solid var(--line-soft);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:1rem}
+.eyebrow{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mocha-deep);font-weight:600;margin-bottom:.4rem}
+.page-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;color:var(--espresso);line-height:1.05}
+.page-sub{font-size:.88rem;color:#6b4f3a;margin-top:.35rem}
+
+/* ── STAT CARDS ──────────────────────────── */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:1.75rem}
+.stat{background:var(--cream);border:1px solid var(--line-soft);border-radius:14px;padding:1.25rem}
+.stat .num{font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--espresso);line-height:1}
+.stat .lbl{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mocha-deep);font-weight:600;margin-top:.35rem}
+
+/* ── CARD ────────────────────────────────── */
+.card{background:var(--cream);border:1px solid var(--line-soft);border-radius:14px;padding:1.5rem}
+.card-title{font-family:var(--serif);font-size:1.2rem;color:var(--espresso);margin-bottom:1.25rem;font-weight:400}
+.card-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem;flex-wrap:wrap;gap:.75rem}
+
+/* ── GRID HELPERS ────────────────────────── */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.g12{display:grid;grid-template-columns:1fr 2fr;gap:1rem}
+.g21{display:grid;grid-template-columns:2fr 1fr;gap:1rem}
+
+/* ── TABLE ───────────────────────────────── */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{text-align:left;padding:.8rem .7rem;border-bottom:1px solid var(--line-soft);font-size:.88rem}
+th{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mocha-deep);font-weight:700;background:rgba(241,230,210,.6)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:rgba(241,230,210,.45)}
+
+/* ── PILLS ───────────────────────────────── */
+.pill{display:inline-flex;align-items:center;border-radius:999px;padding:.22rem .6rem;font-size:.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.p-ok{background:var(--ok-bg);color:var(--ok)}
+.p-warn{background:var(--warn-bg);color:var(--warn)}
+.p-low{background:var(--low-bg);color:var(--low)}
+.p-neutral{background:rgba(74,44,26,.08);color:var(--espresso)}
+.p-blue{background:#dce8f0;color:#2a4a6a}
+
+/* ── FORMS ───────────────────────────────── */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.field{display:flex;flex-direction:column;gap:.38rem}
+.field label{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mocha-deep);font-weight:700}
+.field input,.field select,.field textarea{
+  width:100%;border:1px solid var(--line);border-radius:10px;
+  padding:.72rem .9rem;font-family:var(--sans);font-size:.88rem;
+  color:var(--espresso-ink);background:rgba(255,255,255,.4);transition:border-color .2s;
+}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--mocha)}
+.field textarea{min-height:88px;resize:vertical}
+.full{grid-column:1/-1}
+
+/* ── BUTTONS ─────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;gap:.45rem;
+  border:none;border-radius:999px;padding:.7rem 1.3rem;
+  font-family:var(--sans);font-size:.76rem;letter-spacing:.16em;
+  text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .25s ease;
+}
+.btn-p{background:var(--espresso);color:var(--cream)}
+.btn-p:hover{background:var(--roast)}
+.btn-o{border:1px solid var(--espresso);color:var(--espresso);background:none}
+.btn-o:hover{background:var(--espresso);color:var(--cream)}
+.btn-sm{padding:.42rem .88rem;font-size:.7rem}
+.btn-d{border:1px solid #8a2d1d;color:#8a2d1d;background:none}
+.btn-d:hover{background:#8a2d1d;color:#f7efe0}
+
+/* ── ALERTS ──────────────────────────────── */
+.alert{padding:.85rem 1.1rem;border-radius:10px;font-size:.875rem;margin-bottom:1rem}
+.a-info{background:rgba(74,44,26,.07);color:var(--espresso-ink);border:1px solid var(--line-soft)}
+.a-ok{background:var(--ok-bg);color:var(--ok)}
+.a-err{background:var(--low-bg);color:var(--low)}
+
+/* ── LIST ITEMS ──────────────────────────── */
+.li{display:flex;justify-content:space-between;align-items:center;padding:.9rem .25rem;border-bottom:1px solid var(--line-soft);gap:1rem}
+.li:last-child{border-bottom:none}
+.li:hover{background:rgba(241,230,210,.35)}
+.li-main{display:flex;flex-direction:column;gap:.15rem;flex:1}
+.li-name{font-family:var(--serif);font-size:1.02rem;color:var(--espresso)}
+.li-sub{font-size:.78rem;color:#6b4f3a}
+.li-right{display:flex;align-items:center;gap:.65rem;flex-shrink:0}
+
+/* ── PROGRESS ────────────────────────────── */
+.prog{height:5px;background:rgba(74,44,26,.1);border-radius:99px;overflow:hidden}
+.prog-bar{height:100%;background:var(--mocha);border-radius:99px;transition:width .4s ease}
+
+/* ── SCHEDULE ────────────────────────────── */
+.shift{
+  display:grid;grid-template-columns:1.6fr 1fr 1fr auto;
+  gap:.75rem;align-items:center;
+  padding:.85rem 1rem;border:1px solid var(--line-soft);
+  border-radius:10px;background:rgba(247,239,224,.5);margin-bottom:.5rem;
+}
+.shift:hover{background:var(--cream)}
+.shift-name{font-family:var(--serif);font-size:.98rem;color:var(--espresso)}
+.shift-role{font-size:.76rem;color:#6b4f3a}
+
+/* ── HAND NOTE ───────────────────────────── */
+.hand{font-family:var(--hand);color:var(--mocha-deep);font-size:1.3rem;margin-top:.75rem;display:block}
+
+/* ── DIVIDER ─────────────────────────────── */
+.hr{border:none;border-top:1px solid var(--line-soft);margin:1.5rem 0}
+
+/* ── MODAL ───────────────────────────────── */
+.modal-ov{position:fixed;inset:0;background:rgba(42,24,16,.6);backdrop-filter:blur(4px);z-index:50;display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.modal{background:var(--cream);border-radius:18px;padding:2rem;width:min(520px,100%);max-height:90vh;overflow-y:auto;box-shadow:0 40px 80px -30px rgba(42,24,16,.5)}
+.modal-title{font-family:var(--serif);font-size:1.55rem;font-weight:300;color:var(--espresso);margin-bottom:1.5rem}
+
+/* ── MOBILE TOGGLE ───────────────────────── */
+.m-toggle{display:none;position:fixed;top:1rem;left:1rem;z-index:60;background:var(--espresso);color:var(--cream);border:none;border-radius:10px;padding:.55rem .75rem;cursor:pointer;font-size:1.15rem}
+
+/* ── STATUS TEXT ─────────────────────────── */
+.st{display:block;font-size:.83rem;color:#6b4f3a;margin-top:.65rem;min-height:1.2rem}
+
+/* ── HIDDEN ──────────────────────────────── */
+.hidden{display:none!important}
+
+/* ── RESPONSIVE ──────────────────────────── */
+@media(max-width:900px){
+  .app{grid-template-columns:1fr}
+  .sidebar{position:fixed;left:-264px;top:0;bottom:0;width:256px;z-index:50;transition:left .3s ease}
+  .sidebar.open{left:0}
+  .m-toggle{display:flex}
+  .main{padding:1rem 1rem 2rem;padding-top:4rem}
+  .g2,.g3,.g12,.g21{grid-template-columns:1fr}
+  .fg{grid-template-columns:1fr}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .shift{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){.stats{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<!-- ═══════ LOGIN GATE ═══════════════════════════════════════════ -->
+<div class="login-gate" id="loginGate">
+  <div class="login-card">
+    <div class="login-logo">
+      <img src="assets/logo.png" alt="Rumi Café">
+      <div class="login-logo-text">Rumi Café<small>Admin Portal</small></div>
+    </div>
+    <h1 class="login-title">Staff sign in.</h1>
+    <p class="login-sub">Enter the portal password to manage café operations.</p>
+    <form id="loginForm">
+      <div class="field" style="margin-bottom:1rem">
+        <label for="pw">Password</label>
+        <input id="pw" type="password" autocomplete="current-password" required placeholder="Portal password">
+      </div>
+      <button type="submit" class="btn btn-p" style="width:100%;justify-content:center">Unlock Portal →</button>
+    </form>
+    <p id="loginErr" class="st" style="color:#8a2d1d"></p>
+  </div>
+</div>
+
+<!-- ═══════ MOBILE TOGGLE ════════════════════════════════════════ -->
+<button class="m-toggle" id="mToggle">☰</button>
+
+<!-- ═══════ APP SHELL ════════════════════════════════════════════ -->
+<div class="app" id="appShell">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/logo.png" alt="Rumi Café">
+      <div class="sidebar-logo-text">Rumi Café<small>operations</small></div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <div class="sidebar-section">Overview</div>
+      <button class="sidebar-link active" data-page="dashboard">
+        <span class="ico">◎</span> Dashboard
+      </button>
+
+      <div class="sidebar-section">Operations</div>
+      <button class="sidebar-link" data-page="inventory">
+        <span class="ico">◫</span> Inventory
+        <span class="badge hidden" id="lowBadge">!</span>
+      </button>
+      <button class="sidebar-link" data-page="schedule">
+        <span class="ico">◷</span> Schedule
+      </button>
+
+      <div class="sidebar-section">Community</div>
+      <button class="sidebar-link" data-page="events">
+        <span class="ico">◈</span> Events
+      </button>
+      <button class="sidebar-link" data-page="loyalty">
+        <span class="ico">◆</span> Loyalty
+      </button>
+
+      <div class="sidebar-section">System</div>
+      <button class="sidebar-link" data-page="settings">
+        <span class="ico">⊕</span> Settings
+      </button>
+    </nav>
+
+    <div class="sidebar-footer">
+      <button id="logoutBtn">⟵ Lock</button>
+      <span class="sidebar-footer-sep">·</span>
+      <a href="index.html">View Site</a>
+    </div>
+  </aside>
+
+  <!-- ── MAIN ── -->
+  <main class="main">
+
+    <!-- ═══ DASHBOARD ═══════════════════════════════════════════ -->
+    <div class="page active" id="page-dashboard">
+      <div class="page-hd">
+        <div>
+          <div class="eyebrow">Rumi Café · Operations</div>
+          <h1 class="page-title" id="dashGreet">Good morning.</h1>
+          <p class="page-sub" id="dashDate"></p>
+        </div>
+        <button class="btn btn-o btn-sm" id="refreshBtn">↻ Refresh</button>
+      </div>
+
+      <div class="alert a-info hidden" id="apiAlert">
+        API not configured — showing sample data. Go to <strong>Settings</strong> to connect your Google Apps Script backend.
+      </div>
+
+      <div class="stats">
+        <div class="stat"><div class="num" id="sOrders">—</div><div class="lbl">Today's Orders</div></div>
+        <div class="stat"><div class="num" id="sShifts">—</div><div class="lbl">Staff on Shift</div></div>
+        <div class="stat"><div class="num" id="sLow">—</div><div class="lbl">Low Stock Items</div></div>
+        <div class="stat"><div class="num" id="sMembers">—</div><div class="lbl">Active Members</div></div>
+      </div>
+
+      <div class="g21" style="gap:1rem">
+        <div>
+          <div class="card" style="margin-bottom:1rem">
+            <div class="card-hd">
+              <div class="card-title" style="margin:0">Recent Orders</div>
+            </div>
+            <div class="tbl-wrap">
+              <table id="ordersTable">
+                <thead><tr><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+                <tbody><tr><td colspan="4" style="text-align:center;color:#8a7256;padding:1.5rem">Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Low Stock Alerts</div>
+            <div id="lowList"><p style="color:#8a7256;font-size:.9rem;padding:.25rem 0">Loading…</p></div>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div class="card">
+            <div class="card-title">Today's Team</div>
+            <div id="dashTeam"><p style="color:#8a7256;font-size:.9rem">Loading…</p></div>
+          </div>
+
+          <div class="card">
+            <div class="card-title">Yield Calculator</div>
+            <div class="fg">
+              <div class="field"><label>Bags</label><input type="number" id="yBags" value="1" min="0" step="1"></div>
+              <div class="field"><label>Bag kg</label><input type="number" id="yKg" value="1" min="0" step="0.1"></div>
+              <div class="field"><label>g / cup</label><input type="number" id="yDose" value="18" min="1" step="1"></div>
+              <div class="field"><label>Waste %</label><input type="number" id="yWaste" value="5" min="0" max="40" step="1"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.65rem;margin-top:.85rem">
+              <div style="border:1px solid var(--line-soft);border-radius:10px;padding:.85rem;text-align:center">
+                <div style="font-family:var(--serif);font-size:1.75rem;font-weight:300;color:var(--espresso)" id="yPerBag">52</div>
+                <div style="font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha-deep);font-weight:600">cups / bag</div>
+              </div>
+              <div style="border:1px solid var(--line-soft);border-radius:10px;padding:.85rem;text-align:center">
+                <div style="font-family:var(--serif);font-size:1.75rem;font-weight:300;color:var(--espresso)" id="yTotal">52</div>
+                <div style="font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mocha-deep);font-weight:600">total cups</div>
+              </div>
+            </div>
+            <span class="hand">formula: (kg × 1000 × (1−waste%)) ÷ dose</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ INVENTORY ════════════════════════════════════════════ -->
+    <div class="page" id="page-inventory">
+      <div class="page-hd">
+        <div>
+          <div class="eyebrow">Stock Room</div>
+          <h1 class="page-title">Inventory</h1>
+          <p class="page-sub">Track supplies, get low-stock alerts, manage reorders.</p>
+        </div>
+        <button class="btn btn-p btn-sm" id="addInvBtn">+ Add Item</button>
+      </div>
+
+      <div class="card">
+        <div class="card-hd">
+          <div style="display:flex;gap:.65rem;flex-wrap:wrap">
+            <select id="invCatFilter" style="border:1px solid var(--line);border-radius:8px;padding:.48rem .75rem;font-family:var(--sans);font-size:.84rem;background:rgba(255,255,255,.4);color:var(--espresso-ink)">
+              <option value="">All Categories</option>
+              <option>Coffee</option><option>Dairy</option><option>Bakery</option>
+              <option>Service</option><option>Syrup</option><option>Other</option>
+            </select>
+            <select id="invStFilter" style="border:1px solid var(--line);border-radius:8px;padding:.48rem .75rem;font-family:var(--sans);font-size:.84rem;background:rgba(255,255,255,.4);color:var(--espresso-ink)">
+              <option value="">All Status</option>
+              <option>Good</option><option>Low</option><option>Restock</option>
+            </select>
+          </div>
+          <span id="invCount" style="font-size:.8rem;color:#6b4f3a"></span>
+        </div>
+        <div class="tbl-wrap">
+          <table id="invTable">
+            <thead><tr><th>Item</th><th>Category</th><th>Qty</th><th>Reorder At</th><th>Status</th><th>Supplier</th><th></th></tr></thead>
+            <tbody><tr><td colspan="7" style="text-align:center;color:#8a7256;padding:2rem">Loading inventory…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SCHEDULE ═════════════════════════════════════════════ -->
+    <div class="page" id="page-schedule">
+      <div class="page-hd">
+        <div>
+          <div class="eyebrow">Employee Management</div>
+          <h1 class="page-title">Schedule</h1>
+          <p class="page-sub">View today's shifts and manage the team calendar.</p>
+        </div>
+        <button class="btn btn-p btn-sm" id="addShiftBtn">+ Add Shift</button>
+      </div>
+
+      <div class="g12" style="gap:1rem">
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div class="card">
+            <div class="card-title">Today's Shifts</div>
+            <div id="todayShifts"><p style="color:#8a7256;font-size:.9rem">Loading…</p></div>
+          </div>
+          <div class="card">
+            <div class="card-title">Upcoming Shifts</div>
+            <div id="upcomingShifts"><p style="color:#8a7256;font-size:.9rem">Loading…</p></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Add New Shift</div>
+          <form id="shiftForm" class="fg">
+            <div class="field"><label>Employee Name</label><input name="employee" required placeholder="Full name"></div>
+            <div class="field"><label>Role</label>
+              <select name="role">
+                <option>Barista</option><option>Barista Lead</option>
+                <option>Floor Host</option><option>Kitchen</option>
+                <option>Manager</option><option>Cashier</option>
+              </select>
+            </div>
+            <div class="field"><label>Date</label><input name="date" type="date" required></div>
+            <div class="field"><label>Status</label>
+              <select name="status">
+                <option>Scheduled</option><option>Confirmed</option><option>Time-off</option>
+              </select>
+            </div>
+            <div class="field"><label>Start Time</label><input name="start" type="time" value="07:00"></div>
+            <div class="field"><label>End Time</label><input name="end" type="time" value="15:00"></div>
+            <div class="field full"><label>Notes</label><input name="notes" placeholder="Optional shift notes…"></div>
+            <div class="full">
+              <button type="submit" class="btn btn-p">Add Shift</button>
+              <span class="st" id="shiftSt"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ EVENTS ═══════════════════════════════════════════════ -->
+    <div class="page" id="page-events">
+      <div class="page-hd">
+        <div>
+          <div class="eyebrow">Community Board</div>
+          <h1 class="page-title">Events</h1>
+          <p class="page-sub">Publish and manage events that appear live on the website.</p>
+        </div>
+      </div>
+
+      <div class="g21" style="gap:1rem">
+        <div class="card">
+          <div class="card-hd">
+            <div class="card-title" style="margin:0">Published Events</div>
+          </div>
+          <div id="eventsList"><p style="color:#8a7256;font-size:.9rem;text-align:center;padding:1.5rem">Loading…</p></div>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Publish Event</div>
+          <form id="eventForm">
+            <div class="field" style="margin-bottom:.65rem">
+              <label>Event Title</label>
+              <input name="title" required placeholder="Book Day, Open Mic…">
+            </div>
+            <div class="fg" style="margin-bottom:.65rem">
+              <div class="field"><label>Date</label><input name="date" type="date" required></div>
+              <div class="field"><label>Time</label><input name="time" placeholder="19:00 — 22:00" required></div>
+              <div class="field"><label>Ticket / Entry</label><input name="price" placeholder="Free"></div>
+              <div class="field"><label>Capacity</label><input name="capacity" type="number" placeholder="30"></div>
+            </div>
+            <div class="field" style="margin-bottom:.65rem">
+              <label>Description</label>
+              <textarea name="description" required placeholder="Short description visible on the website."></textarea>
+            </div>
+            <div class="field" style="margin-bottom:1.1rem">
+              <label>Event Image (optional)</label>
+              <input name="image" type="file" accept="image/*">
+            </div>
+            <button type="submit" class="btn btn-p">Publish to Website</button>
+            <span class="st" id="eventSt"></span>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ LOYALTY ══════════════════════════════════════════════ -->
+    <div class="page" id="page-loyalty">
+      <div class="page-hd">
+        <div>
+          <div class="eyebrow">Member Management</div>
+          <h1 class="page-title">Loyalty</h1>
+          <p class="page-sub">Track points, manage tiers, reward your regulars.</p>
+        </div>
+        <button class="btn btn-p btn-sm" id="addMemberBtn">+ Add Member</button>
+      </div>
+
+      <div class="stats" style="grid-template-columns:repeat(4,1fr)">
+        <div class="stat"><div class="num" id="ltTotal">—</div><div class="lbl">Total Members</div></div>
+        <div class="stat"><div class="num" id="ltHouse">—</div><div class="lbl">House Circle</div></div>
+        <div class="stat"><div class="num" id="ltReady">—</div><div class="lbl">Reward Ready</div></div>
+        <div class="stat"><div class="num" id="ltNew">—</div><div class="lbl">New This Month</div></div>
+      </div>
+
+      <div class="g21" style="gap:1rem">
+        <div class="card">
+          <div class="card-hd">
+            <div class="card-title" style="margin:0">Members</div>
+            <input type="search" id="custSearch" placeholder="Search name or email…"
+              style="border:1px solid var(--line);border-radius:8px;padding:.45rem .75rem;font-size:.84rem;font-family:var(--sans);background:rgba(255,255,255,.4);color:var(--espresso-ink);width:210px">
+          </div>
+          <div class="tbl-wrap">
+            <table id="custTable">
+              <thead><tr><th>Member</th><th>Points</th><th>Tier</th><th>Last Visit</th><th></th></tr></thead>
+              <tbody><tr><td colspan="5" style="text-align:center;color:#8a7256;padding:2rem">Loading members…</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:1rem">
+          <div class="card">
+            <div class="card-title">Add Points</div>
+            <form id="pointsForm">
+              <div class="field" style="margin-bottom:.65rem">
+                <label>Customer ID</label>
+                <input name="customerId" required placeholder="CUS-XXXXXXXX">
+              </div>
+              <div class="field" style="margin-bottom:.85rem">
+                <label>Points to Add</label>
+                <input name="points" type="number" required placeholder="50" min="1">
+              </div>
+              <button type="submit" class="btn btn-p" style="width:100%;justify-content:center">Add Points</button>
+              <span class="st" id="ptsSt"></span>
+            </form>
+          </div>
+
+          <div class="card">
+            <div class="card-title" style="margin-bottom:1rem">Tier Guide</div>
+            <div class="li" style="padding:.7rem .25rem"><div class="li-main"><div class="li-name" style="color:#8a6646">Warm Cup</div><div class="li-sub">0 – 499 points</div></div></div>
+            <div class="li" style="padding:.7rem .25rem"><div class="li-main"><div class="li-name" style="color:#6b4226">Mocha Tier</div><div class="li-sub">500 – 749 points</div></div></div>
+            <div class="li" style="padding:.7rem .25rem"><div class="li-main"><div class="li-name" style="color:#4a2c1a">Community Regular</div><div class="li-sub">750 – 999 points</div></div></div>
+            <div class="li" style="padding:.7rem .25rem"><div class="li-main"><div class="li-name" style="color:#2a1810;font-weight:500">House Circle</div><div class="li-sub">1000+ points · Free coffee ready</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ SETTINGS ═════════════════════════════════════════════ -->
+    <div class="page" id="page-settings">
+      <div class="page-hd">
+        <div>
+          <div class="eyebrow">Configuration</div>
+          <h1 class="page-title">Settings</h1>
+          <p class="page-sub">Connect this portal to your Google Apps Script backend.</p>
+        </div>
+      </div>
+
+      <div class="g2" style="gap:1rem">
+        <div class="card">
+          <div class="card-title">API Configuration</div>
+          <div class="alert a-info" style="margin-bottom:1rem">
+            Deploy <code style="background:rgba(74,44,26,.08);padding:.1rem .35rem;border-radius:4px">rumi-cafe-backend.gs</code> as a Web App in Google Apps Script, then paste the URL and token below.
+          </div>
+          <form id="settingsForm">
+            <div class="field" style="margin-bottom:.65rem">
+              <label>Web App URL</label>
+              <input id="cfgUrl" type="url" placeholder="https://script.google.com/macros/s/…">
+            </div>
+            <div class="field" style="margin-bottom:.65rem">
+              <label>Portal Token</label>
+              <input id="cfgToken" type="password" placeholder="Secret token from the Settings sheet">
+            </div>
+            <div class="field" style="margin-bottom:1.1rem">
+              <label>Change Portal Password</label>
+              <input id="cfgPw" type="password" placeholder="Leave blank to keep current">
+            </div>
+            <div style="display:flex;gap:.65rem;flex-wrap:wrap">
+              <button type="submit" class="btn btn-p">Save Settings</button>
+              <button type="button" id="testBtn" class="btn btn-o">Test Connection</button>
+            </div>
+          </form>
+          <span class="st" id="settingsSt"></span>
+        </div>
+
+        <div class="card">
+          <div class="card-title">Setup Guide</div>
+          <ol style="padding-left:1.2rem;display:flex;flex-direction:column;gap:.85rem;font-size:.88rem;color:#5a3f2c;line-height:1.65">
+            <li>Open <strong>Google Sheets</strong> → create a new spreadsheet named <em>Rumi Café Operations</em>.</li>
+            <li>Go to <strong>Extensions → Apps Script</strong>.</li>
+            <li>Paste <code style="background:rgba(74,44,26,.08);padding:.1rem .35rem;border-radius:4px">rumi-cafe-backend.gs</code> into Code.gs and save.</li>
+            <li>Run <code style="background:rgba(74,44,26,.08);padding:.1rem .35rem;border-radius:4px">setupRumiCafeBackend()</code> and approve permissions.</li>
+            <li>Go to <strong>Deploy → New deployment → Web App</strong>.<br>Execute as: <em>Me</em> · Access: <em>Anyone</em>. Copy the URL.</li>
+            <li>Open the <em>Settings</em> sheet → copy the <strong>Portal Token</strong> value.</li>
+            <li>Paste both into the form on the left and click <strong>Save Settings</strong>.</li>
+            <li>Click <strong>Test Connection</strong> — you should see a success message.</li>
+          </ol>
+          <span class="hand" style="margin-top:1rem">all set — enjoy running the café. ☕</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ═══════ INVENTORY MODAL ══════════════════════════════════════ -->
+<div class="modal-ov hidden" id="invModal">
+  <div class="modal">
+    <h2 class="modal-title" id="invModalTitle">Add Stock Item</h2>
+    <form id="invForm" class="fg">
+      <div class="field"><label>Item Name</label><input name="item" required placeholder="House coffee beans"></div>
+      <div class="field"><label>Category</label>
+        <select name="category">
+          <option>Coffee</option><option>Dairy</option><option>Bakery</option>
+          <option>Service</option><option>Syrup</option><option>Other</option>
+        </select>
+      </div>
+      <div class="field"><label>Quantity</label><input name="quantity" type="number" min="0" required placeholder="25"></div>
+      <div class="field"><label>Unit</label><input name="unit" placeholder="kg, L, pcs…"></div>
+      <div class="field"><label>Reorder Level</label><input name="reorderLevel" type="number" min="0" placeholder="8"></div>
+      <div class="field"><label>Supplier</label><input name="supplier" placeholder="Supplier name"></div>
+      <input type="hidden" name="id" id="invFormId">
+      <div class="full" style="display:flex;gap:.65rem">
+        <button type="submit" class="btn btn-p">Save Item</button>
+        <button type="button" class="btn btn-o" id="invModalClose">Cancel</button>
+      </div>
+    </form>
+    <span class="st" id="invFormSt"></span>
+  </div>
+</div>
+
+<!-- ═══════ MEMBER MODAL ═════════════════════════════════════════ -->
+<div class="modal-ov hidden" id="memberModal">
+  <div class="modal">
+    <h2 class="modal-title">Add Loyalty Member</h2>
+    <form id="memberForm" class="fg">
+      <div class="field"><label>Full Name</label><input name="name" required placeholder="Member's name"></div>
+      <div class="field"><label>Email</label><input name="email" type="email" placeholder="email@example.com"></div>
+      <div class="field"><label>Phone</label><input name="phone" placeholder="+254…"></div>
+      <div class="field"><label>Starting Points</label><input name="points" type="number" value="0" min="0"></div>
+      <div class="field full"><label>Notes</label><input name="notes" placeholder="Birthday month, preferences…"></div>
+      <div class="full" style="display:flex;gap:.65rem">
+        <button type="submit" class="btn btn-p">Add Member</button>
+        <button type="button" class="btn btn-o" id="memberModalClose">Cancel</button>
+      </div>
+    </form>
+    <span class="st" id="memberFormSt"></span>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG — stored in localStorage so settings survive refresh
+   ============================================================ */
+const S = {
+  get pw()    { return localStorage.getItem('rumiPw')    || 'rumi2026'; },
+  get url()   { return localStorage.getItem('rumiUrl')   || ''; },
+  get token() { return localStorage.getItem('rumiToken') || ''; },
+  save(url, token, pw) {
+    if (url)   localStorage.setItem('rumiUrl',   url);
+    if (token) localStorage.setItem('rumiToken', token);
+    if (pw)    localStorage.setItem('rumiPw',    pw);
+  }
+};
+
+/* ============================================================
+   SAMPLE DATA — shown when API not configured
+   ============================================================ */
+const today = () => new Date().toISOString().slice(0,10);
+const addDays = d => { const dt = new Date(); dt.setDate(dt.getDate()+d); return dt.toISOString().slice(0,10); };
+
+const SAMPLE = {
+  summary: { orders:42, staffShifts:8, lowStock:3, loyaltyScans:126 },
+  inventory: [
+    { id:'INV-001', item:'House coffee beans', category:'Coffee',  quantity:18,  unit:'kg',      reorderLevel:8,   status:'Good',    supplier:'Nairobi Roasters' },
+    { id:'INV-002', item:'Whole milk',         category:'Dairy',   quantity:9,   unit:'L',       reorderLevel:12,  status:'Restock', supplier:'Daily Dairy'      },
+    { id:'INV-003', item:'Pastries',           category:'Bakery',  quantity:14,  unit:'pcs',     reorderLevel:20,  status:'Low',     supplier:'Morning Bake'     },
+    { id:'INV-004', item:'Takeaway cups',      category:'Service', quantity:220, unit:'pcs',     reorderLevel:100, status:'Good',    supplier:'Eco Pack'         },
+    { id:'INV-005', item:'Vanilla syrup',      category:'Syrup',   quantity:3,   unit:'bottles', reorderLevel:2,   status:'Good',    supplier:'Sweet Co.'        }
+  ],
+  shifts: [
+    { id:'SHF-001', employee:'Amina',  role:'Barista Lead', date:today(), start:'07:00', end:'15:00', status:'Scheduled' },
+    { id:'SHF-002', employee:'Kevin',  role:'Floor Host',   date:today(), start:'09:00', end:'17:00', status:'Scheduled' },
+    { id:'SHF-003', employee:'Mary',   role:'Kitchen',      date:today(), start:'10:00', end:'18:00', status:'Scheduled' },
+    { id:'SHF-004', employee:'Amina',  role:'Barista Lead', date:addDays(1), start:'07:00', end:'15:00', status:'Scheduled' },
+    { id:'SHF-005', employee:'Daniel', role:'Barista',      date:addDays(1), start:'09:00', end:'17:00', status:'Confirmed' }
+  ],
+  events: [
+    { id:'EVT-001', title:'Book Day',       date:addDays(4),  time:'14:00 — 18:00', price:'Free', status:'Open',     description:'A slow afternoon for readers and regulars.',  rsvp:'18', capacity:'28' },
+    { id:'EVT-002', title:'Barista Day',    date:addDays(7),  time:'11:00 — 13:00', price:'Free', status:'Open',     description:'Taste, learn, and pull a clean espresso shot.', rsvp:'7',  capacity:'16' },
+    { id:'EVT-003', title:'Gratitude Day',  date:addDays(14), time:'All day',        price:'Free', status:'Planning', description:'Community notes, warm drinks, shared stories.',  rsvp:'0',  capacity:'32' }
+  ],
+  customers: [
+    { id:'CUS-001', name:'Amina K.',  email:'amina@example.com',  phone:'', points:'680', tier:'Mocha Tier',        lastVisit:today(), notes:'' },
+    { id:'CUS-002', name:'Brian M.',  email:'brian@example.com',  phone:'', points:'920', tier:'Community Regular', lastVisit:today(), notes:'Reward ready' },
+    { id:'CUS-003', name:'Sarah W.',  email:'sarah@example.com',  phone:'', points:'410', tier:'Warm Cup',          lastVisit:today(), notes:'' }
+  ],
+  recentOrders: [
+    { orderDate:today(), customer:'Walk-in',  items:'2 Latte, 1 Croissant', total:'18.50', status:'Complete' },
+    { orderDate:today(), customer:'Brian M.', items:'1 Cappuccino',         total:'6.50',  status:'Complete' }
+  ]
+};
+
+/* ============================================================
+   HELPERS
+   ============================================================ */
+const esc = str => String(str||'').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+function pill(status) {
+  const s = String(status||'').toLowerCase();
+  const cls = ['good','complete','open','confirmed','scheduled'].includes(s) ? 'p-ok'
+    : ['low','restock','cancelled'].includes(s) ? 'p-low'
+    : ['planning','pending'].includes(s) ? 'p-warn' : 'p-neutral';
+  return `<span class="pill ${cls}">${esc(status)}</span>`;
+}
+
+async function filePayload(file) {
+  return new Promise(resolve => {
+    if (!file) return resolve(null);
+    const r = new FileReader();
+    r.onload = () => resolve({ name:file.name, mimeType:file.type, data:String(r.result).split(',')[1] });
+    r.readAsDataURL(file);
+  });
+}
+
+/* ============================================================
+   API
+   ============================================================ */
+async function apiGet(action, params={}) {
+  const u = new URL(S.url);
+  u.searchParams.set('action', action);
+  u.searchParams.set('token', S.token);
+  Object.entries(params).forEach(([k,v]) => u.searchParams.set(k,v));
+  const res = await fetch(u.toString());
+  const j = await res.json();
+  if (!j.ok) throw new Error(j.error||'API error');
+  return j.data;
+}
+
+async function apiPost(body) {
+  const res = await fetch(S.url, { method:'POST', body:JSON.stringify({...body,token:S.token}) });
+  const j = await res.json();
+  if (!j.ok) throw new Error(j.error||'API error');
+  return j.data;
+}
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+const loginGate = document.getElementById('loginGate');
+const loginErr  = document.getElementById('loginErr');
+
+if (sessionStorage.getItem('rumiAdmin')==='1') loginGate.classList.add('hidden');
+
+document.getElementById('loginForm').addEventListener('submit', e => {
+  e.preventDefault();
+  if (document.getElementById('pw').value.trim() !== S.pw) {
+    loginErr.textContent = 'Incorrect password.'; return;
+  }
+  sessionStorage.setItem('rumiAdmin','1');
+  loginGate.classList.add('hidden');
+  initDashboard();
+});
+
+document.getElementById('logoutBtn').addEventListener('click', () => {
+  sessionStorage.removeItem('rumiAdmin'); location.reload();
+});
+
+/* ============================================================
+   NAV
+   ============================================================ */
+const sidebar = document.getElementById('sidebar');
+document.getElementById('mToggle').addEventListener('click', () => sidebar.classList.toggle('open'));
+
+document.querySelectorAll('.sidebar-link[data-page]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.sidebar-link').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('page-'+btn.dataset.page).classList.add('active');
+    sidebar.classList.remove('open');
+    const loaders = {
+      dashboard: initDashboard, inventory: initInventory,
+      schedule: initSchedule,   events: initEvents,
+      loyalty: initLoyalty,     settings: initSettings
+    };
+    loaders[btn.dataset.page]?.();
+  });
+});
+
+/* ── date header ── */
+const now = new Date();
+document.getElementById('dashDate').textContent = now.toLocaleDateString(undefined,{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+const hr = now.getHours();
+document.getElementById('dashGreet').textContent = hr<12?'Good morning.':hr<17?'Good afternoon.':'Good evening.';
+
+/* ============================================================
+   DASHBOARD
+   ============================================================ */
+async function initDashboard() {
+  if (!S.url) {
+    document.getElementById('apiAlert').classList.remove('hidden');
+    renderDash(SAMPLE); return;
+  }
+  document.getElementById('apiAlert').classList.add('hidden');
+  try {
+    const data = await apiGet('dashboard');
+    renderDash(data);
+  } catch(err) {
+    document.getElementById('apiAlert').classList.remove('hidden');
+    document.getElementById('apiAlert').textContent = 'API error: '+err.message+'. Showing sample data.';
+    renderDash(SAMPLE);
+  }
+}
+
+function renderDash(data) {
+  const s = data.summary||{};
+  document.getElementById('sOrders').textContent  = s.orders       ?? '—';
+  document.getElementById('sShifts').textContent  = s.staffShifts  ?? '—';
+  document.getElementById('sLow').textContent     = s.lowStock     ?? '—';
+  document.getElementById('sMembers').textContent = s.loyaltyScans ?? '—';
+
+  if ((s.lowStock||0) > 0) {
+    document.getElementById('lowBadge').classList.remove('hidden');
+    document.getElementById('lowBadge').textContent = s.lowStock;
+  }
+
+  /* orders */
+  const orders = data.recentOrders||[];
+  document.querySelector('#ordersTable tbody').innerHTML = !orders.length
+    ? '<tr><td colspan="4" style="text-align:center;color:#8a7256;padding:1.5rem">No orders yet today.</td></tr>'
+    : orders.map(o=>`<tr><td>${esc(o.customer)}</td><td>${esc(o.items)}</td><td>$${esc(o.total)}</td><td>${pill(o.status)}</td></tr>`).join('');
+
+  /* team */
+  const shifts = (data.shifts||[]).filter(s=>s.date===today());
+  document.getElementById('dashTeam').innerHTML = !shifts.length
+    ? '<p style="color:#8a7256;font-size:.9rem">No shifts scheduled for today.</p>'
+    : shifts.map(s=>`
+      <div class="li">
+        <div class="li-main"><div class="li-name">${esc(s.employee)}</div><div class="li-sub">${esc(s.role)}</div></div>
+        <div class="li-right"><span style="font-size:.86rem">${esc(s.start)} — ${esc(s.end)}</span>${pill(s.status)}</div>
+      </div>`).join('');
+
+  /* low stock */
+  const low = (data.inventory||[]).filter(i=>['low','restock'].includes(String(i.status||'').toLowerCase()));
+  document.getElementById('lowList').innerHTML = !low.length
+    ? '<p style="color:var(--ok);font-size:.9rem">✓ All stock levels are healthy.</p>'
+    : low.map(i=>`
+      <div class="li">
+        <div class="li-main"><div class="li-name">${esc(i.item)}</div><div class="li-sub">${esc(i.category)} · ${esc(i.supplier)}</div></div>
+        <div class="li-right"><span style="font-size:.88rem">${esc(i.quantity)} ${esc(i.unit)}</span>${pill(i.status)}</div>
+      </div>`).join('');
+}
+
+document.getElementById('refreshBtn').addEventListener('click', initDashboard);
+
+/* ── yield calc ── */
+const yCalc = () => {
+  const bags = +document.getElementById('yBags').value||0;
+  const kg   = +document.getElementById('yKg').value||0;
+  const dose = +document.getElementById('yDose').value||1;
+  const waste= (+document.getElementById('yWaste').value||0)/100;
+  const pb   = Math.floor(kg*1000*(1-waste)/dose);
+  document.getElementById('yPerBag').textContent = pb;
+  document.getElementById('yTotal').textContent  = Math.floor(pb*bags);
+};
+['yBags','yKg','yDose','yWaste'].forEach(id=>document.getElementById(id).addEventListener('input',yCalc));
+yCalc();
+
+/* ============================================================
+   INVENTORY
+   ============================================================ */
+let _inv = [];
+
+async function initInventory() {
+  if (!S.url) { renderInv(SAMPLE.inventory); return; }
+  try {
+    const d = await apiGet('list',{sheet:'Inventory'});
+    renderInv(d.rows||[]);
+  } catch { renderInv(SAMPLE.inventory); }
+}
+
+function renderInv(rows) {
+  _inv = rows;
+  const cat = document.getElementById('invCatFilter').value.toLowerCase();
+  const st  = document.getElementById('invStFilter').value.toLowerCase();
+  const filtered = rows.filter(r=>{
+    if (cat && String(r.category||'').toLowerCase()!==cat) return false;
+    if (st  && String(r.status||'').toLowerCase()!==st)   return false;
+    return true;
+  });
+  document.getElementById('invCount').textContent = `${filtered.length} of ${rows.length} items`;
+  document.querySelector('#invTable tbody').innerHTML = !filtered.length
+    ? '<tr><td colspan="7" style="text-align:center;color:#8a7256;padding:2rem">No items match the filter.</td></tr>'
+    : filtered.map(r=>`<tr>
+        <td><strong style="color:var(--espresso)">${esc(r.item)}</strong></td>
+        <td>${esc(r.category)}</td>
+        <td>${esc(r.quantity)} ${esc(r.unit)}</td>
+        <td>${esc(r.reorderLevel)} ${esc(r.unit)}</td>
+        <td>${pill(r.status)}</td>
+        <td>${esc(r.supplier)}</td>
+        <td><button class="btn btn-o btn-sm" onclick="editInv('${esc(r.id)}')">Edit</button></td>
+      </tr>`).join('');
+}
+
+['invCatFilter','invStFilter'].forEach(id=>document.getElementById(id).addEventListener('change',()=>renderInv(_inv)));
+
+document.getElementById('addInvBtn').addEventListener('click', () => {
+  document.getElementById('invModalTitle').textContent = 'Add Stock Item';
+  document.getElementById('invForm').reset();
+  document.getElementById('invFormId').value = '';
+  document.getElementById('invFormSt').textContent = '';
+  document.getElementById('invModal').classList.remove('hidden');
+});
+document.getElementById('invModalClose').addEventListener('click', () => document.getElementById('invModal').classList.add('hidden'));
+
+function editInv(id) {
+  const item = _inv.find(r=>r.id===id); if (!item) return;
+  const f = document.getElementById('invForm');
+  document.getElementById('invModalTitle').textContent = 'Edit Stock Item';
+  f.item.value        = item.item||'';
+  f.category.value    = item.category||'Coffee';
+  f.quantity.value    = item.quantity||'';
+  f.unit.value        = item.unit||'';
+  f.reorderLevel.value= item.reorderLevel||'';
+  f.supplier.value    = item.supplier||'';
+  document.getElementById('invFormId').value = id;
+  document.getElementById('invFormSt').textContent = '';
+  document.getElementById('invModal').classList.remove('hidden');
+}
+
+document.getElementById('invForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.currentTarget, stEl = document.getElementById('invFormSt');
+  stEl.textContent = 'Saving…';
+  if (!S.url) { stEl.textContent = 'API not configured. Go to Settings.'; return; }
+  const data = {
+    id:           document.getElementById('invFormId').value||undefined,
+    item:         f.item.value,
+    category:     f.category.value,
+    quantity:     f.quantity.value,
+    unit:         f.unit.value,
+    reorderLevel: f.reorderLevel.value,
+    supplier:     f.supplier.value,
+    status:       +f.quantity.value <= +f.reorderLevel.value ? 'Low' : 'Good'
+  };
+  try {
+    await apiPost({action:'upsert',sheet:'Inventory',data,actor:'Admin Portal'});
+    stEl.textContent = '✓ Saved!';
+    document.getElementById('invModal').classList.add('hidden');
+    await initInventory();
+  } catch(err) { stEl.textContent = 'Error: '+err.message; }
+});
+
+/* ============================================================
+   SCHEDULE
+   ============================================================ */
+let _shifts = [];
+
+async function initSchedule() {
+  if (!S.url) { renderShifts(SAMPLE.shifts); return; }
+  try {
+    const d = await apiGet('list',{sheet:'Shifts'});
+    renderShifts(d.rows||[]);
+  } catch { renderShifts(SAMPLE.shifts); }
+}
+
+function renderShifts(rows) {
+  _shifts = rows;
+  const todayStr = today();
+  const todayShifts    = rows.filter(r=>r.date===todayStr);
+  const upcomingShifts = rows.filter(r=>r.date>todayStr).slice(0,8);
+
+  const shiftHTML = sh => `
+    <div class="li">
+      <div class="li-main"><div class="li-name">${esc(sh.employee)}</div><div class="li-sub">${esc(sh.role)}</div></div>
+      <div class="li-right">
+        <span style="font-size:.86rem">${esc(sh.start)} — ${esc(sh.end)}</span>
+        ${pill(sh.status)}
+      </div>
+    </div>`;
+
+  document.getElementById('todayShifts').innerHTML = !todayShifts.length
+    ? '<p style="color:#8a7256;font-size:.9rem">No shifts scheduled for today.</p>'
+    : todayShifts.map(shiftHTML).join('');
+
+  document.getElementById('upcomingShifts').innerHTML = !upcomingShifts.length
+    ? '<p style="color:#8a7256;font-size:.9rem">No upcoming shifts.</p>'
+    : upcomingShifts.map(sh=>`
+      <div class="li">
+        <div class="li-main"><div class="li-name">${esc(sh.employee)}</div><div class="li-sub">${esc(sh.date)} · ${esc(sh.role)}</div></div>
+        <div class="li-right"><span style="font-size:.85rem">${esc(sh.start)} — ${esc(sh.end)}</span>${pill(sh.status)}</div>
+      </div>`).join('');
+}
+
+document.getElementById('shiftForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.currentTarget, stEl = document.getElementById('shiftSt');
+  stEl.textContent = 'Adding shift…';
+  if (!S.url) { stEl.textContent = 'API not configured. Go to Settings.'; return; }
+  const data = { employee:f.employee.value, role:f.role.value, date:f.date.value, start:f.start.value, end:f.end.value, status:f.status.value, notes:f.notes.value };
+  try {
+    await apiPost({action:'upsert',sheet:'Shifts',data,actor:'Admin Portal'});
+    stEl.textContent = '✓ Shift added!';
+    f.reset();
+    await initSchedule();
+  } catch(err) { stEl.textContent = 'Error: '+err.message; }
+});
+
+/* ============================================================
+   EVENTS
+   ============================================================ */
+let _events = [];
+
+async function initEvents() {
+  if (!S.url) { renderEvents(SAMPLE.events); return; }
+  try {
+    const d = await apiGet('list',{sheet:'Events'});
+    renderEvents(d.rows||[]);
+  } catch { renderEvents(SAMPLE.events); }
+}
+
+function renderEvents(rows) {
+  _events = rows;
+  const el = document.getElementById('eventsList');
+  if (!rows.length) {
+    el.innerHTML = '<p style="color:#8a7256;text-align:center;padding:2rem">No events published yet.</p>';
+    return;
+  }
+  el.innerHTML = rows.map(ev=>{
+    const rsvp = +(ev.rsvp||0), cap = +(ev.capacity||0);
+    const pct  = cap>0 ? Math.min(100,Math.round(rsvp/cap*100)) : 0;
+    return `
+    <div class="li">
+      <div class="li-main">
+        <div class="li-name">${esc(ev.title)}</div>
+        <div class="li-sub">${esc(ev.date)} · ${esc(ev.time)} · ${esc(ev.price||'Free')}</div>
+        ${cap>0?`<div style="margin-top:.4rem"><div style="font-size:.73rem;color:#6b4f3a;margin-bottom:.25rem">${rsvp} / ${cap} RSVP</div><div class="prog" style="width:140px"><div class="prog-bar" style="width:${pct}%"></div></div></div>`:''}
+      </div>
+      <div class="li-right">${pill(ev.status)}</div>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('eventForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.currentTarget, stEl = document.getElementById('eventSt');
+  stEl.textContent = 'Publishing…';
+  if (!S.url) { stEl.textContent = 'API not configured. Go to Settings first.'; return; }
+  const img = await filePayload(f.image.files[0]);
+  const data = {
+    title:f.title.value, date:f.date.value, time:f.time.value,
+    price:f.price.value||'Free', capacity:f.capacity.value||'0', status:'Open',
+    description:f.description.value,
+    imageName:img?.name, imageMimeType:img?.mimeType, imageData:img?.data
+  };
+  try {
+    await apiPost({action:'upsert',sheet:'Events',data,actor:'Admin Portal'});
+    stEl.textContent = '✓ Event published! It will appear on the website.';
+    f.reset();
+    await initEvents();
+  } catch(err) { stEl.textContent = 'Error: '+err.message; }
+});
+
+/* ============================================================
+   LOYALTY
+   ============================================================ */
+let _custs = [];
+
+async function initLoyalty() {
+  if (!S.url) { renderCustomers(SAMPLE.customers); return; }
+  try {
+    const d = await apiGet('list',{sheet:'Customers'});
+    renderCustomers(d.rows||[]);
+  } catch { renderCustomers(SAMPLE.customers); }
+}
+
+function renderCustomers(rows) {
+  _custs = rows;
+  const total  = rows.length;
+  const house  = rows.filter(r=>+(r.points||0)>=1000).length;
+  const ready  = rows.filter(r=>+(r.points||0)>=1000).length;
+  const thisM  = new Date().getMonth();
+  document.getElementById('ltTotal').textContent = total;
+  document.getElementById('ltHouse').textContent = house;
+  document.getElementById('ltReady').textContent = ready;
+  document.getElementById('ltNew').textContent   = '—';
+
+  document.querySelector('#custTable tbody').innerHTML = !rows.length
+    ? '<tr><td colspan="5" style="text-align:center;color:#8a7256;padding:2rem">No members yet.</td></tr>'
+    : rows.map(c=>`<tr>
+        <td>
+          <div style="font-family:var(--serif);color:var(--espresso)">${esc(c.name)}</div>
+          <div style="font-size:.76rem;color:#6b4f3a">${esc(c.email)}</div>
+        </td>
+        <td>
+          <div style="font-family:var(--serif);font-size:1.05rem;color:var(--espresso)">${esc(c.points)}</div>
+          <div class="prog" style="width:80px;margin-top:3px"><div class="prog-bar" style="width:${Math.min(100,Math.round(+(c.points||0)/10))}%"></div></div>
+        </td>
+        <td><span class="pill p-neutral">${esc(c.tier)}</span></td>
+        <td style="font-size:.83rem">${esc(c.lastVisit)}</td>
+        <td><button class="btn btn-o btn-sm" onclick="prefillPoints('${esc(c.id)}')">+ Pts</button></td>
+      </tr>`).join('');
+}
+
+function prefillPoints(id) {
+  document.getElementById('pointsForm').customerId.value = id;
+  document.getElementById('pointsForm').points.focus();
+}
+
+document.getElementById('custSearch').addEventListener('input', e => {
+  const q = e.target.value.toLowerCase();
+  renderCustomers(_custs.filter(c=>(c.name||'').toLowerCase().includes(q)||(c.email||'').toLowerCase().includes(q)));
+});
+
+document.getElementById('pointsForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.currentTarget, stEl = document.getElementById('ptsSt');
+  stEl.textContent = 'Adding points…';
+  if (!S.url) { stEl.textContent = 'API not configured.'; return; }
+  try {
+    await apiPost({action:'addLoyaltyPoints',customerId:f.customerId.value,points:+f.points.value,actor:'Admin Portal'});
+    stEl.textContent = '✓ Points added!';
+    f.reset();
+    await initLoyalty();
+  } catch(err) { stEl.textContent = 'Error: '+err.message; }
+});
+
+document.getElementById('addMemberBtn').addEventListener('click', () => {
+  document.getElementById('memberModal').classList.remove('hidden');
+  document.getElementById('memberForm').reset();
+  document.getElementById('memberFormSt').textContent = '';
+});
+document.getElementById('memberModalClose').addEventListener('click', () => document.getElementById('memberModal').classList.add('hidden'));
+
+document.getElementById('memberForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const f = e.currentTarget, stEl = document.getElementById('memberFormSt');
+  stEl.textContent = 'Adding member…';
+  if (!S.url) { stEl.textContent = 'API not configured.'; return; }
+  const data = { name:f.name.value, email:f.email.value, phone:f.phone.value, points:f.points.value||'0', notes:f.notes.value, tier:'Warm Cup', lastVisit:today() };
+  try {
+    await apiPost({action:'upsert',sheet:'Customers',data,actor:'Admin Portal'});
+    stEl.textContent = '✓ Member added!';
+    document.getElementById('memberModal').classList.add('hidden');
+    await initLoyalty();
+  } catch(err) { stEl.textContent = 'Error: '+err.message; }
+});
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+function initSettings() {
+  document.getElementById('cfgUrl').value   = S.url||'';
+  document.getElementById('cfgToken').value = S.token||'';
+}
+
+document.getElementById('settingsForm').addEventListener('submit', e => {
+  e.preventDefault();
+  S.save(
+    document.getElementById('cfgUrl').value.trim(),
+    document.getElementById('cfgToken').value.trim(),
+    document.getElementById('cfgPw').value.trim()||null
+  );
+  document.getElementById('settingsSt').textContent = '✓ Settings saved. Reload the page to apply.';
+});
+
+document.getElementById('testBtn').addEventListener('click', async () => {
+  const stEl = document.getElementById('settingsSt');
+  stEl.textContent = 'Testing connection…';
+  if (!S.url) { stEl.textContent = 'Enter a Web App URL first.'; return; }
+  try {
+    const res  = await fetch(S.url+'?action=health');
+    const json = await res.json();
+    stEl.textContent = json.ok
+      ? '✓ Connected to '+(json.data?.cafe||'Rumi Café')+' — API is live.'
+      : 'API responded with an error: '+json.error;
+  } catch(err) { stEl.textContent = 'Connection failed: '+err.message; }
+});
+
+/* ============================================================
+   INIT — auto-load dashboard if already unlocked
+   ============================================================ */
+if (sessionStorage.getItem('rumiAdmin')==='1') initDashboard();
+</script>
+</body>
+</html>
