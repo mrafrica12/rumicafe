@@ -1,0 +1,2078 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rumi Café — More Than a Cup. A Culture.</title>
+<meta name="description" content="Rumi Café — slow coffee rooted in African heritage. Handcrafted daily in Nairobi, Kenya." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,200;0,9..144,300;0,9..144,400;1,9..144,200;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/rumi.css">
+<style>
+/* ============================================================
+   DESIGN SYSTEM
+   ============================================================ */
+:root {
+  /* Dark tones */
+  --ink:        #050c04;
+  --forest:     #0b1809;
+  --forest-2:   #112010;
+  --roast:      #150703;
+  --espresso:   #2a1205;
+
+  /* Gold + cream */
+  --gold:       #c9a44a;
+  --gold-lt:    #e0c87c;
+  --gold-dk:    #8a6820;
+  --olive:      #5a5220;
+  --cream:      #f4ead8;
+  --paper:      #f9f3e8;
+  --sand:       #ede0c2;
+
+  /* Neutral mid */
+  --mocha:      #7a5428;
+  --line:       rgba(201,164,74,0.22);
+  --line-lt:    rgba(244,234,216,0.14);
+  --line-dark:  rgba(5,12,4,0.12);
+
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Inter', system-ui, sans-serif;
+  --hand:  'Caveat', cursive;
+
+  --max: 1240px;
+  --gutter: clamp(1.25rem, 4vw, 2.5rem);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+body{
+  font-family: var(--sans);
+  background: var(--paper);
+  color: var(--espresso);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* ---- Typography ---- */
+.eyebrow{
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--gold);
+}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:300;letter-spacing:-0.01em}
+h1{font-size:clamp(2.8rem, 7vw, 5.8rem);line-height:1.0}
+h2{font-size:clamp(2.2rem, 5vw, 3.8rem);line-height:1.08}
+h3{font-size:clamp(1.2rem, 2vw, 1.5rem);line-height:1.2;font-weight:400}
+.hand{font-family:var(--hand);font-weight:500}
+
+/* ---- Layout ---- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+section{position:relative}
+.section-pad{padding:clamp(5rem, 10vw, 9rem) 0}
+.section-head{margin-bottom:clamp(2.5rem, 5vw, 4.5rem)}
+.section-head .eyebrow{margin-bottom:1rem;display:block}
+.section-head h2{margin-bottom:1.25rem}
+.section-head p{font-size:1.05rem;max-width:560px;line-height:1.75}
+
+/* ---- Buttons ---- */
+.btn{
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:1rem 2rem;border-radius:999px;
+  font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;
+  transition:all 0.35s cubic-bezier(.2,.7,.2,1);
+  font-family:var(--sans);
+}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{background:var(--gold-lt);transform:translateY(-2px);box-shadow:0 12px 32px -10px rgba(201,164,74,0.45)}
+.btn-outline-cream{border:1.5px solid rgba(244,234,216,0.5);color:var(--cream)}
+.btn-outline-cream:hover{background:rgba(244,234,216,0.12);border-color:var(--cream)}
+.btn-outline-dark{border:1.5px solid var(--espresso);color:var(--espresso)}
+.btn-outline-dark:hover{background:var(--espresso);color:var(--cream)}
+.btn .arrow{transition:transform 0.3s ease}
+.btn:hover .arrow{transform:translateX(4px)}
+
+/* ---- Scroll reveal ---- */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal.d2{transition-delay:0.12s}
+.reveal.d3{transition-delay:0.24s}
+.reveal.d4{transition-delay:0.36s}
+
+/* ============================================================
+   THE SPACE — interior photo mosaic
+   ============================================================ */
+.space-section{background:var(--forest);padding:clamp(5rem,10vw,9rem) 0}
+.space-section .section-head{text-align:center;margin:0 auto clamp(3rem,5vw,4rem);max-width:600px}
+.space-section .section-head .eyebrow{color:var(--gold)}
+.space-section .section-head h2{color:var(--cream);font-weight:200}
+.space-section .section-head h2 em{font-style:italic;color:var(--gold-lt)}
+.space-section .section-head p{color:rgba(244,234,216,0.65);margin:1rem auto 0}
+.space-mosaic{
+  display:grid;
+  grid-template-columns:1.6fr 1fr 1fr;
+  grid-template-rows:280px 280px;
+  gap:0.75rem;
+  border-radius:4px;
+  overflow:hidden;
+}
+.space-tile{overflow:hidden;position:relative;background:var(--forest-2)}
+.space-tile img{width:100%;height:100%;object-fit:cover;transition:transform 1.2s ease;filter:brightness(0.88) saturate(1.05)}
+.space-tile:hover img{transform:scale(1.06);filter:brightness(0.95) saturate(1.1)}
+.space-tile--tall{grid-row:span 2}
+.space-tile--wide{grid-column:span 2}
+.space-quote-tile{
+  background:rgba(201,164,74,0.08);border:1px solid rgba(201,164,74,0.2);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  padding:2rem;text-align:center;
+}
+.space-quote-tile blockquote{
+  font-family:var(--serif);font-style:italic;font-size:1.2rem;
+  color:var(--cream);line-height:1.5;
+}
+.space-quote-tile cite{
+  display:block;font-family:var(--sans);font-style:normal;
+  font-size:0.65rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--gold);margin-top:1.25rem;font-weight:600;
+}
+@media(max-width:1024px){
+  .space-mosaic{grid-template-columns:1fr 1fr;grid-template-rows:240px 240px 240px}
+  .space-tile--tall{grid-row:span 1}
+}
+@media(max-width:720px){
+  .space-mosaic{grid-template-columns:1fr;grid-template-rows:repeat(4,220px)}
+  .space-tile--wide{grid-column:span 1}
+}
+
+/* ============================================================
+   MOUNTAIN WAVE DIVIDERS
+   ============================================================ */
+.wave{display:block;width:100%;line-height:0;pointer-events:none}
+.wave svg{display:block;width:100%}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:1.4rem 0;
+  transition:background 0.5s ease,padding 0.5s ease,box-shadow 0.5s ease;
+}
+.nav.scrolled{
+  background:rgba(5,12,4,0.94);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  padding:0.9rem 0;
+  box-shadow:0 2px 40px rgba(0,0,0,0.4);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.nav-logo{
+  display:flex;align-items:center;gap:0.75rem;
+  font-family:var(--serif);font-size:1.2rem;color:var(--cream);font-weight:400;letter-spacing:0.04em;
+}
+.nav-logo img{height:36px;width:36px;object-fit:contain;filter:brightness(1.1)}
+.nav-logo span small{
+  font-family:var(--sans);font-size:0.55rem;letter-spacing:0.35em;
+  color:var(--gold);text-transform:uppercase;display:block;margin-top:-2px;font-weight:600;
+}
+.nav-links{display:flex;gap:2.4rem;list-style:none}
+.nav-links a{
+  font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(244,234,216,0.75);position:relative;padding:0.25rem 0;font-weight:500;
+  transition:color 0.3s;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a::after{
+  content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;
+  background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform 0.4s ease;
+}
+.nav-links a:hover::after{transform:scaleX(1);transform-origin:left}
+.nav-cta{
+  font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;
+  border:1.5px solid var(--gold);color:var(--gold);
+  padding:0.65rem 1.4rem;border-radius:999px;transition:all 0.3s ease;font-weight:600;
+}
+.nav-cta:hover{background:var(--gold);color:var(--ink)}
+.nav-toggle{display:none}
+
+/* ---- Mobile app navigation ---- */
+.mobile-bottom-nav{display:none}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  min-height:100vh;
+  background:var(--ink);
+  background-image:url('assets/images/rumi_cafe_04.webp');
+  background-size:cover;
+  background-position:center 35%;
+  display:grid;
+  grid-template-rows:1fr auto;
+  position:relative;
+  overflow:hidden;
+}
+
+/* atmospheric glow over background photo */
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    linear-gradient(135deg, rgba(5,12,4,0.82) 0%, rgba(5,12,4,0.55) 50%, rgba(5,12,4,0.75) 100%);
+  pointer-events:none;z-index:0;
+}
+/* subtle grid texture */
+.hero::after{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(201,164,74,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,164,74,0.025) 1px, transparent 1px);
+  background-size:60px 60px;
+  pointer-events:none;z-index:0;
+}
+
+.hero-body{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  min-height:calc(100vh - 80px);
+  padding:8rem var(--gutter) 4rem;
+  max-width:var(--max);
+  margin:0 auto;
+  width:100%;
+  position:relative;z-index:2;
+}
+
+.hero-text{
+  padding-right:3rem;
+}
+.hero-text .eyebrow{
+  margin-bottom:2rem;
+  display:inline-flex;align-items:center;gap:1rem;
+}
+.hero-text .eyebrow::before{content:'';width:36px;height:1px;background:var(--gold);display:inline-block}
+.hero-text h1{
+  color:var(--cream);
+  font-weight:200;
+  margin-bottom:2rem;
+}
+.hero-text h1 em{
+  font-style:italic;color:var(--gold-lt);font-weight:300;
+  display:block;
+}
+.hero-sub{
+  font-size:1.05rem;color:rgba(244,234,216,0.68);
+  max-width:440px;margin-bottom:3rem;line-height:1.75;
+}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap}
+
+/* Hero visual: African lady with beans decoration */
+.hero-visual{
+  position:relative;
+  display:flex;align-items:flex-end;justify-content:center;
+  height:100%;min-height:500px;
+}
+.hero-img-frame{
+  position:relative;
+  width:100%;max-width:480px;
+  height:580px;
+  border-radius:4px;
+  overflow:hidden;
+}
+.hero-img-frame img{
+  width:100%;height:100%;
+  object-fit:contain;object-position:center bottom;
+  filter:brightness(1.0) saturate(0.9);
+  mix-blend-mode:multiply;
+  opacity:0.55;
+}
+.hero-img-frame::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 60%,rgba(5,12,4,0.45));
+}
+/* Gold frame accent */
+.hero-img-frame::before{
+  content:'';position:absolute;
+  inset:12px;border:1px solid rgba(201,164,74,0.3);
+  z-index:1;pointer-events:none;border-radius:2px;
+}
+
+/* Floating coffee bean decorations */
+.hero-bean{
+  position:absolute;
+  border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+  background:radial-gradient(ellipse at 35% 35%, #6b4226, #2a1205);
+  box-shadow:0 4px 12px rgba(0,0,0,0.5);
+}
+.hero-bean:nth-child(1){width:28px;height:18px;top:15%;right:-30px;transform:rotate(25deg);opacity:0.85}
+.hero-bean:nth-child(2){width:22px;height:14px;top:35%;left:-40px;transform:rotate(-15deg);opacity:0.7}
+.hero-bean:nth-child(3){width:32px;height:20px;bottom:30%;right:-50px;transform:rotate(40deg);opacity:0.9}
+.hero-bean:nth-child(4){width:18px;height:12px;bottom:20%;left:-20px;transform:rotate(-30deg);opacity:0.6}
+.hero-bean:nth-child(5){width:24px;height:15px;top:60%;right:-45px;transform:rotate(10deg);opacity:0.75}
+/* centre line on bean */
+.hero-bean::after{
+  content:'';position:absolute;left:50%;top:20%;bottom:20%;
+  width:1.5px;background:rgba(42,18,5,0.6);transform:translateX(-50%);border-radius:1px;
+}
+
+/* Badge top right */
+.hero-badge{
+  position:absolute;top:2rem;right:2rem;z-index:3;
+  width:90px;height:90px;
+  border-radius:50%;border:1px solid rgba(201,164,74,0.4);
+  background:rgba(5,12,4,0.7);backdrop-filter:blur(8px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+}
+.hero-badge .b-pct{font-family:var(--serif);font-size:1.4rem;color:var(--gold);line-height:1}
+.hero-badge .b-text{font-size:0.5rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-lt);text-align:center;font-weight:600;line-height:1.3}
+
+/* Marquee bar */
+.hero-marquee{
+  border-top:1px solid rgba(201,164,74,0.2);
+  padding:0.85rem 0;overflow:hidden;
+  background:rgba(201,164,74,0.04);
+  position:relative;z-index:2;
+}
+.hero-marquee-track{
+  display:flex;gap:3rem;white-space:nowrap;
+  animation:marquee 50s linear infinite;
+  font-family:var(--serif);font-style:italic;
+  color:rgba(201,164,74,0.7);font-size:0.9rem;letter-spacing:0.06em;
+}
+.hero-marquee-track span{display:inline-flex;align-items:center;gap:3rem}
+.hero-marquee-track span::after{content:'✦';color:var(--gold);font-size:0.6rem;font-style:normal}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ============================================================
+   STORY — "OUR COFFEE" light section
+   ============================================================ */
+.story{background:var(--paper)}
+.story-intro{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:2.5rem;margin-bottom:clamp(4rem,8vw,7rem);
+  padding-top:1rem;
+}
+.story-pillar{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  gap:1.25rem;padding:2.5rem 1.5rem;
+  border:1px solid var(--line-dark);border-radius:3px;
+}
+.story-pillar-icon{
+  width:56px;height:56px;
+  display:flex;align-items:center;justify-content:center;
+}
+.story-pillar-icon svg{width:100%;height:100%}
+.story-pillar h4{
+  font-family:var(--sans);font-size:0.68rem;letter-spacing:0.3em;
+  text-transform:uppercase;color:var(--espresso);font-weight:600;
+}
+.story-pillar p{font-size:0.9rem;color:#5a3f2c;line-height:1.65}
+
+.story-grid{display:grid;grid-template-columns:0.95fr 1.05fr;gap:clamp(3rem,7vw,7rem);align-items:center}
+.story-img{
+  aspect-ratio:4/5;border-radius:3px;overflow:hidden;
+  background:var(--sand);
+  box-shadow:0 40px 80px -30px rgba(5,12,4,0.2);
+  display:flex;align-items:center;justify-content:center;
+}
+.story-img img{width:100%;height:100%;object-fit:contain;mix-blend-mode:multiply;padding:1.5rem;filter:saturate(1.1) contrast(1.05)}
+.story-text .eyebrow{color:var(--mocha);margin-bottom:1.5rem}
+.story-text h2{color:var(--espresso);margin-bottom:2rem}
+.story-text h2 em{font-style:italic;color:var(--mocha);font-weight:300}
+.story-text p{margin-bottom:1.5rem;font-size:1.0625rem;line-height:1.8;color:#5a3a22}
+.story-sig{
+  font-family:var(--hand);font-size:1.9rem;color:var(--espresso);
+  margin-top:2.5rem;display:block;
+}
+.story-sig small{
+  display:block;font-family:var(--sans);font-size:0.68rem;letter-spacing:0.28em;
+  text-transform:uppercase;color:var(--mocha);margin-top:0.3rem;font-weight:600;
+}
+
+/* ============================================================
+   MOUNTAIN DIVIDERS
+   ============================================================ */
+.divider-dark{background:var(--paper);line-height:0}
+.divider-light{background:var(--forest);line-height:0}
+
+/* ============================================================
+   ROOTS — dark Wallenford-style "products" section
+   ============================================================ */
+.roots{background:var(--forest);overflow:hidden}
+/* subtle dot texture */
+.roots::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(201,164,74,0.04) 1px, transparent 1px);
+  background-size:32px 32px;pointer-events:none;
+}
+.roots-inner{
+  display:grid;grid-template-columns:1fr 1fr;
+  align-items:center;gap:clamp(3rem,6vw,6rem);
+  position:relative;z-index:1;
+}
+.roots-text .eyebrow{color:var(--gold);margin-bottom:1.5rem}
+.roots-text h2{color:var(--cream);font-weight:200;margin-bottom:2rem}
+.roots-text h2 em{font-style:italic;color:var(--gold-lt);font-weight:300}
+.roots-text p{color:rgba(244,234,216,0.72);font-size:1.0625rem;line-height:1.8;margin-bottom:1.5rem}
+.roots-sig{
+  font-family:var(--hand);font-size:1.6rem;color:var(--gold-lt);
+  display:block;margin-top:2.5rem;
+}
+.roots-sig small{
+  display:block;font-family:var(--sans);font-size:0.68rem;letter-spacing:0.28em;
+  text-transform:uppercase;color:rgba(201,164,74,0.6);margin-top:0.3rem;font-weight:600;
+}
+.roots-btn{
+  margin-top:2rem;
+  display:inline-flex;align-items:center;gap:0.7rem;
+  font-size:0.72rem;letter-spacing:0.25em;text-transform:uppercase;
+  color:var(--gold);border:1px solid rgba(201,164,74,0.4);
+  padding:0.85rem 1.8rem;border-radius:999px;font-weight:600;
+  transition:all 0.3s ease;
+}
+.roots-btn:hover{background:var(--gold);color:var(--ink)}
+
+/* Image side with floating beans */
+.roots-img-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+.roots-img-frame{
+  position:relative;width:100%;max-width:460px;height:560px;
+  border-radius:3px;overflow:hidden;
+  box-shadow:0 40px 80px -20px rgba(0,0,0,0.6);
+}
+.roots-img-frame img{
+  width:100%;height:100%;object-fit:cover;object-position:center center;
+  filter:brightness(0.85) saturate(1.1) contrast(1.05);
+  opacity:0.95;
+}
+.roots-img-frame::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 40%,rgba(11,24,9,0.5));
+}
+/* Gold border accent */
+.roots-img-frame::before{
+  content:'';position:absolute;inset:10px;
+  border:1px solid rgba(201,164,74,0.25);z-index:1;pointer-events:none;
+}
+
+/* Scattered floating beans around roots image */
+.roots-bean{
+  position:absolute;
+  border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+  background:radial-gradient(ellipse at 35% 35%, #8a5a2a, #3a1a0a);
+  box-shadow:0 6px 18px rgba(0,0,0,0.6);
+}
+.roots-bean::after{
+  content:'';position:absolute;left:50%;top:18%;bottom:18%;
+  width:1.5px;background:rgba(30,10,2,0.5);transform:translateX(-50%);border-radius:1px;
+}
+.roots-bean:nth-child(1){width:42px;height:26px;top:12%;right:-60px;transform:rotate(20deg)}
+.roots-bean:nth-child(2){width:30px;height:18px;top:28%;right:-90px;transform:rotate(-35deg);opacity:0.7}
+.roots-bean:nth-child(3){width:36px;height:22px;bottom:25%;right:-70px;transform:rotate(50deg);opacity:0.85}
+.roots-bean:nth-child(4){width:26px;height:16px;top:50%;left:-50px;transform:rotate(-20deg);opacity:0.75}
+.roots-bean:nth-child(5){width:48px;height:30px;bottom:12%;left:-65px;transform:rotate(15deg);opacity:0.9}
+.roots-bean:nth-child(6){width:22px;height:14px;top:70%;right:-40px;transform:rotate(-45deg);opacity:0.65}
+
+/* ============================================================
+   DRINKS — light section
+   ============================================================ */
+.drinks{background:var(--paper)}
+.drinks-head{
+  display:flex;justify-content:space-between;align-items:flex-end;
+  flex-wrap:wrap;gap:2rem;margin-bottom:clamp(2.5rem,5vw,4.5rem);
+}
+.drinks-head .section-head{margin-bottom:0}
+.drinks-head .section-head .eyebrow{color:var(--mocha)}
+.drinks-head .section-head h2{color:var(--espresso)}
+.drinks-head .price-note{font-family:var(--hand);font-size:1.5rem;color:var(--mocha);transform:rotate(-2deg)}
+.drinks-grid{
+  display:grid;grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+  gap:1px;background:rgba(42,18,5,0.1);
+  border:1px solid rgba(42,18,5,0.1);
+}
+.drink{
+  background:var(--paper);padding:2.5rem 2rem;
+  display:flex;flex-direction:column;gap:1rem;
+  transition:background 0.4s ease;position:relative;min-height:280px;
+}
+.drink:hover{background:var(--sand)}
+.drink-num{
+  font-family:var(--serif);font-style:italic;
+  color:var(--gold-dk);font-size:0.95rem;letter-spacing:0.06em;
+}
+.drink-name{font-family:var(--serif);font-size:1.65rem;color:var(--espresso);font-weight:400;line-height:1.1}
+.drink-desc{font-size:0.92rem;color:#6b4f3a;line-height:1.6;margin-top:0.5rem}
+.drink-foot{
+  margin-top:auto;display:flex;justify-content:space-between;align-items:baseline;
+  padding-top:1.5rem;border-top:1px solid rgba(42,18,5,0.08);
+}
+.drink-price{font-family:var(--serif);font-size:1.15rem;color:var(--espresso)}
+.drink-tag{font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--mocha);font-weight:600}
+
+/* ============================================================
+   CTA BANNER — Wallenford-style gold strip
+   ============================================================ */
+.cta-banner{
+  background:linear-gradient(135deg, #3a2e08, #5a4a15, #3a2e08);
+  padding:clamp(4rem,8vw,7rem) 0;
+  position:relative;overflow:hidden;
+}
+.cta-banner::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 20% 50%, rgba(201,164,74,0.12), transparent 50%),
+    radial-gradient(circle at 80% 50%, rgba(201,164,74,0.1), transparent 50%);
+  pointer-events:none;
+}
+/* decorative gold orb */
+.cta-banner::after{
+  content:'';position:absolute;
+  width:400px;height:400px;border-radius:50%;
+  background:radial-gradient(circle, rgba(201,164,74,0.08), transparent 70%);
+  top:50%;left:50%;transform:translate(-50%,-50%);
+  pointer-events:none;
+}
+.cta-banner-inner{
+  text-align:center;position:relative;z-index:1;
+}
+.cta-banner .eyebrow{color:var(--gold-lt);margin-bottom:1.5rem;display:block}
+.cta-banner h2{
+  color:var(--cream);font-weight:200;font-style:italic;
+  margin-bottom:1.5rem;
+}
+.cta-banner h2 em{color:var(--gold-lt);font-style:italic}
+.cta-banner p{color:rgba(244,234,216,0.65);font-size:1rem;max-width:500px;margin:0 auto 2.5rem;line-height:1.7}
+.cta-banner-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* ============================================================
+   MENU PREVIEW
+   ============================================================ */
+.menu-section{background:var(--ink);padding:clamp(5rem,10vw,9rem) 0}
+.menu-section .section-head{
+  margin:0 auto clamp(3rem,5vw,4rem);
+  text-align:center;max-width:600px;
+}
+.menu-section .section-head .eyebrow{color:var(--gold)}
+.menu-section .section-head h2{color:var(--cream);font-weight:200}
+.menu-section .section-head h2 em{font-style:italic;color:var(--gold-lt)}
+.menu-image-wrap{
+  max-width:880px;margin:0 auto;
+  border-radius:8px;overflow:hidden;
+  box-shadow:0 50px 100px -30px rgba(0,0,0,0.7),
+    0 0 0 1px rgba(201,164,74,0.15);
+}
+.menu-full-img{display:block;width:100%;height:auto}
+.menu-cta{text-align:center;margin-top:3rem}
+
+/* ============================================================
+   EVENTS — light
+   ============================================================ */
+.events{background:var(--paper)}
+.events .section-head .eyebrow{color:var(--mocha)}
+.events .section-head h2{color:var(--espresso)}
+.events-grid{
+  display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+  gap:1.25rem;
+}
+.event{
+  background:#fff;border:1px solid rgba(42,18,5,0.08);
+  padding:2rem;border-radius:3px;
+  display:flex;flex-direction:column;gap:0.85rem;
+  transition:all 0.4s ease;position:relative;overflow:hidden;
+}
+.event::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  background:linear-gradient(90deg, var(--gold), var(--gold-lt));
+  transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;
+}
+.event:hover::before{transform:scaleX(1)}
+.event:hover{transform:translateY(-4px);box-shadow:0 25px 50px -20px rgba(5,12,4,0.15)}
+.event-date{
+  display:flex;align-items:baseline;gap:0.6rem;
+  font-family:var(--serif);color:var(--espresso);
+}
+.event-date .day{font-size:2.4rem;line-height:1;font-weight:300}
+.event-date .month{
+  font-size:0.7rem;letter-spacing:0.28em;text-transform:uppercase;
+  color:var(--mocha);font-family:var(--sans);font-weight:600;
+}
+.event-name{font-family:var(--serif);font-size:1.35rem;color:var(--espresso);margin-top:0.5rem;line-height:1.2}
+.event-desc{font-size:0.9rem;color:#6b4f3a;line-height:1.6}
+.event-meta{
+  margin-top:auto;padding-top:1rem;border-top:1px solid rgba(42,18,5,0.07);
+  display:flex;justify-content:space-between;
+  font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--mocha);font-weight:600;
+}
+.event-rsvp-btn{
+  margin-top:0.75rem;font-size:0.7rem;letter-spacing:0.22em;text-transform:uppercase;
+  color:var(--espresso);border:1px solid rgba(42,18,5,0.2);
+  padding:0.55rem 1.1rem;border-radius:999px;
+  transition:all 0.3s ease;font-weight:600;align-self:flex-start;
+}
+.event-rsvp-btn:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+
+/* ============================================================
+   GALLERY — dark
+   ============================================================ */
+.gallery{background:var(--ink);padding:clamp(5rem,10vw,9rem) 0}
+.gallery .section-head{text-align:center;margin:0 auto clamp(3rem,5vw,4rem);max-width:600px}
+.gallery .section-head .eyebrow{color:var(--gold)}
+.gallery .section-head h2{color:var(--cream);font-weight:200}
+.gallery .section-head h2 em{font-style:italic;color:var(--gold-lt)}
+.gallery-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;
+}
+.gallery-tile{
+  aspect-ratio:1;overflow:hidden;border-radius:2px;
+  background:linear-gradient(135deg, #2a1810, #0d1c0b);
+  position:relative;cursor:pointer;
+}
+.gallery-tile img{width:100%;height:100%;object-fit:cover;transition:transform 1s ease,filter 0.5s ease;filter:brightness(0.82) saturate(0.95)}
+.gallery-tile:hover img{transform:scale(1.07);filter:brightness(1) saturate(1.1)}
+.gallery-tile:nth-child(3){grid-row:span 2;aspect-ratio:1/2}
+.gallery-tile:nth-child(6){grid-column:span 2;aspect-ratio:2/1}
+.gallery-foot{
+  margin-top:2.5rem;text-align:center;
+  font-family:var(--hand);font-size:1.4rem;color:var(--gold);
+}
+.gallery-foot a{border-bottom:1px solid rgba(201,164,74,0.4);padding-bottom:2px;transition:color 0.3s}
+.gallery-foot a:hover{color:var(--gold-lt)}
+
+/* ============================================================
+   LOYALTY — dark forest
+   ============================================================ */
+.loyalty{background:var(--forest-2);position:relative;overflow:hidden}
+.loyalty::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(201,164,74,0.035) 1px, transparent 1px);
+  background-size:28px 28px;pointer-events:none;
+}
+.loyalty .eyebrow{color:var(--gold)}
+.loyalty-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:5rem;align-items:center;position:relative;z-index:1}
+.loyalty-text h2{color:var(--cream);font-weight:200;margin-bottom:2rem}
+.loyalty-text h2 em{font-style:italic;color:var(--gold-lt);font-weight:200}
+.loyalty-text p{color:rgba(244,234,216,0.68);font-size:1.0625rem;line-height:1.8}
+.loyalty-perks{list-style:none;margin-top:2.5rem;display:flex;flex-direction:column;gap:1rem}
+.loyalty-perks li{
+  display:flex;align-items:flex-start;gap:1rem;
+  font-size:1rem;color:rgba(244,234,216,0.72);
+  padding-bottom:1rem;border-bottom:1px solid rgba(201,164,74,0.12);
+}
+.loyalty-perks li:last-child{border-bottom:none}
+.loyalty-perks li span:first-child{
+  font-family:var(--serif);color:var(--gold);font-style:italic;min-width:30px;
+}
+.loyalty-btn{
+  margin-top:2.5rem;background:var(--gold);color:var(--ink);
+  display:inline-flex;align-items:center;gap:0.6rem;
+  padding:1.05rem 2rem;border-radius:999px;
+  font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;
+  transition:all 0.35s cubic-bezier(.2,.7,.2,1);font-family:var(--sans);cursor:pointer;
+  border:none;
+}
+.loyalty-btn:hover{background:var(--gold-lt);transform:translateY(-2px)}
+.loyalty-btn .arrow{transition:transform 0.3s}
+.loyalty-btn:hover .arrow{transform:translateX(4px)}
+
+.loyalty-card{
+  background:linear-gradient(135deg, #1e3a18, #0b1809);
+  border-radius:12px;padding:2rem;color:var(--cream);
+  box-shadow:0 40px 80px -20px rgba(0,0,0,0.6);
+  border:1px solid rgba(201,164,74,0.2);
+  position:relative;overflow:hidden;transform:rotate(-2deg);transition:transform 0.6s ease;
+}
+.loyalty-card:hover{transform:rotate(0deg)}
+.loyalty-card::before{
+  content:'';position:absolute;top:-40%;right:-20%;
+  width:280px;height:280px;
+  background:radial-gradient(circle, rgba(201,164,74,0.1), transparent 70%);border-radius:50%;
+}
+.loyalty-card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:2.5rem}
+.loyalty-card-head img{width:40px;height:40px;filter:invert(1) sepia(0.3) brightness(0.9) saturate(1.5);opacity:0.85}
+.loyalty-card-head small{font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.loyalty-card-name{font-family:var(--serif);font-size:1.4rem;margin-bottom:0.25rem}
+.loyalty-card-tier{font-family:var(--hand);font-size:1.3rem;color:var(--gold-lt)}
+.loyalty-card-pts{margin-top:2rem;display:flex;justify-content:space-between;align-items:flex-end}
+.loyalty-card-pts .num{font-family:var(--serif);font-size:2.5rem;line-height:1;font-weight:200}
+.loyalty-card-pts small{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.loyalty-card-bar{margin-top:1rem;height:3px;background:rgba(201,164,74,0.15);border-radius:99px;overflow:hidden}
+.loyalty-card-bar span{display:block;height:100%;width:68%;background:var(--gold);border-radius:99px}
+.loyalty-card-footer{margin-top:1rem;font-size:0.72rem;color:var(--gold);display:flex;justify-content:space-between}
+
+/* ============================================================
+   CONTACT — light
+   ============================================================ */
+.contact{background:var(--sand)}
+.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:clamp(3rem,6vw,6rem);align-items:start}
+.contact .eyebrow{color:var(--mocha)}
+.contact-text h2{color:var(--espresso);margin-top:0.75rem;margin-bottom:1.5rem}
+.contact-text h2 em{font-style:italic;color:var(--mocha);font-weight:300}
+.contact-text p{font-size:1.0625rem;line-height:1.8;margin-bottom:2rem;color:#5a3a22}
+.contact-detail{display:flex;flex-direction:column;gap:1rem;margin-top:2rem}
+.contact-detail a{font-size:0.9rem;color:var(--mocha);transition:color 0.3s;font-weight:500}
+.contact-detail a:hover{color:var(--espresso)}
+
+.contact-form{display:flex;flex-direction:column;gap:1.25rem}
+.cf-field{display:flex;flex-direction:column;gap:0.45rem}
+.cf-field label{font-size:0.68rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--mocha);font-weight:600}
+.cf-field input,
+.cf-field select,
+.cf-field textarea{
+  font-family:var(--sans);font-size:0.95rem;color:var(--espresso);
+  background:var(--paper);border:1px solid rgba(42,18,5,0.15);
+  padding:0.85rem 1.1rem;border-radius:3px;
+  transition:border-color 0.3s,box-shadow 0.3s;outline:none;width:100%;
+}
+.cf-field input:focus,
+.cf-field select:focus,
+.cf-field textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,164,74,0.12)}
+.cf-field textarea{resize:vertical;min-height:130px;line-height:1.6}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+#contactMsg{font-size:0.82rem;margin-top:0.25rem;color:var(--mocha);font-family:var(--serif);font-style:italic;min-height:1.2em}
+
+/* ============================================================
+   VISIT
+   ============================================================ */
+.visit{background:var(--paper)}
+.visit .eyebrow{color:var(--mocha)}
+.visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem)}
+.visit-info{display:flex;flex-direction:column;gap:2.5rem}
+.visit-block h3{font-family:var(--serif);font-size:1.5rem;color:var(--espresso);font-weight:400;margin-bottom:0.5rem}
+.visit-block p{font-size:1rem;color:#5a3a22;line-height:1.7}
+.visit-hours{display:grid;grid-template-columns:auto 1fr;gap:0.5rem 1.5rem;font-family:var(--serif);font-size:1rem;color:var(--espresso)}
+.visit-hours dt{color:var(--mocha);font-style:italic}
+.visit-socials{display:flex;gap:0.75rem;flex-wrap:wrap;margin-top:0.5rem}
+.visit-socials a{
+  padding:0.65rem 1.2rem;border:1.5px solid rgba(42,18,5,0.15);border-radius:999px;
+  font-size:0.72rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--espresso);font-weight:600;
+  transition:all 0.3s ease;
+}
+.visit-socials a:hover{background:var(--gold);color:var(--ink);border-color:var(--gold)}
+.visit-map{
+  aspect-ratio:1;border-radius:4px;overflow:hidden;
+  background:linear-gradient(135deg, #d4c4a0, #b09870);
+  position:relative;box-shadow:0 30px 60px -20px rgba(5,12,4,0.2);
+}
+.visit-map-pin{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-100%);
+  display:flex;flex-direction:column;align-items:center;
+}
+.visit-map-pin .pin{
+  width:42px;height:42px;background:var(--espresso);border-radius:50% 50% 50% 0;
+  transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 20px -5px rgba(5,12,4,0.4);
+  animation:pinFloat 3s ease-in-out infinite;
+}
+.visit-map-pin .pin::after{content:'';width:14px;height:14px;background:var(--gold);border-radius:50%;transform:rotate(45deg)}
+.visit-map-label{
+  margin-top:1rem;background:var(--paper);padding:0.6rem 1rem;border-radius:4px;
+  font-family:var(--serif);font-size:0.9rem;color:var(--espresso);
+  box-shadow:0 8px 20px -5px rgba(5,12,4,0.2);border:1px solid rgba(42,18,5,0.1);
+}
+@keyframes pinFloat{0%,100%{transform:rotate(-45deg) translateY(0)}50%{transform:rotate(-45deg) translateY(-8px)}}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{background:var(--roast);color:var(--gold-lt);padding:5rem 0 2rem;position:relative}
+.footer::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(rgba(201,164,74,0.03) 1px,transparent 1px);
+  background-size:28px 28px;pointer-events:none;
+}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;position:relative}
+.footer h4{color:var(--cream);font-family:var(--sans);font-size:0.68rem;letter-spacing:0.32em;text-transform:uppercase;margin-bottom:1.5rem;font-weight:600}
+.footer-brand img{width:56px;height:56px;filter:invert(1) sepia(0.3) brightness(0.9) saturate(1.5) opacity(0.85);margin-bottom:1.25rem}
+.footer-brand p{color:rgba(201,164,74,0.5);font-size:0.9rem;line-height:1.7;max-width:280px;font-family:var(--serif);font-style:italic}
+.footer ul{list-style:none;display:flex;flex-direction:column;gap:0.85rem}
+.footer a{font-size:0.88rem;color:rgba(201,164,74,0.5);transition:color 0.3s;font-family:var(--sans)}
+.footer a:hover{color:var(--gold-lt)}
+.footer-bottom{
+  margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(201,164,74,0.1);
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;
+  font-size:0.78rem;color:rgba(201,164,74,0.3);position:relative;
+}
+.footer-bottom em{font-family:var(--hand);font-style:normal;font-size:1.1rem;color:rgba(201,164,74,0.5)}
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+.modal-overlay{
+  position:fixed;inset:0;z-index:500;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(5,12,4,0.7);backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);opacity:0;pointer-events:none;
+  transition:opacity 0.35s ease;
+}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal-box{
+  background:var(--paper);border-radius:6px;
+  padding:clamp(2rem,5vw,3.5rem);max-width:480px;width:90%;
+  position:relative;transform:translateY(20px);
+  transition:transform 0.35s cubic-bezier(.2,.7,.2,1);
+  box-shadow:0 40px 80px -20px rgba(5,12,4,0.5);
+  max-height:90vh;overflow-y:auto;
+}
+.modal-overlay.open .modal-box{transform:translateY(0)}
+.modal-close{
+  position:absolute;top:1.25rem;right:1.25rem;
+  width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+  color:var(--mocha);font-size:1.25rem;opacity:0.65;transition:opacity 0.2s;cursor:pointer;
+}
+.modal-close:hover{opacity:1}
+.modal-eyebrow{font-size:0.68rem;letter-spacing:0.32em;text-transform:uppercase;color:var(--mocha);font-weight:600;margin-bottom:1rem}
+.modal-title{font-family:var(--serif);font-size:1.75rem;color:var(--espresso);margin-bottom:0.75rem;font-weight:300}
+.modal-sub{font-size:0.92rem;color:#6b4f3a;line-height:1.6;margin-bottom:2rem}
+.modal-form{display:flex;flex-direction:column;gap:1rem}
+.modal-form .cf-field input,
+.modal-form .cf-field select{
+  font-family:var(--sans);font-size:0.92rem;color:var(--espresso);
+  background:var(--sand);border:1px solid rgba(42,18,5,0.12);
+  padding:0.8rem 1rem;border-radius:3px;
+  transition:border-color 0.3s,box-shadow 0.3s;outline:none;width:100%;
+}
+.modal-form .cf-field input:focus,
+.modal-form .cf-field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,164,74,0.12)}
+.modal-submit{
+  margin-top:0.5rem;width:100%;background:var(--gold);color:var(--ink);
+  padding:1.05rem;border-radius:999px;
+  font-size:0.78rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:600;
+  border:none;cursor:pointer;font-family:var(--sans);
+  transition:background 0.3s,transform 0.3s;
+}
+.modal-submit:hover{background:var(--gold-lt);transform:translateY(-1px)}
+.modal-note{font-size:0.78rem;color:var(--mocha);font-family:var(--serif);font-style:italic;margin-top:0.5rem;min-height:1.2em}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media(max-width:1024px){
+  .hero-body{grid-template-columns:1fr;gap:3rem;text-align:center}
+  .hero-text{padding-right:0}
+  .hero-text .eyebrow{justify-content:center}
+  .hero-sub{margin-left:auto;margin-right:auto}
+  .hero-cta{justify-content:center}
+  .hero-visual{min-height:380px}
+  .hero-img-frame{max-width:380px;height:460px}
+  .roots-inner{grid-template-columns:1fr;gap:4rem}
+  .roots-img-wrap{order:-1}
+  .roots-bean:nth-child(1),
+  .roots-bean:nth-child(2),
+  .roots-bean:nth-child(3){right:-30px}
+  .roots-bean:nth-child(4),
+  .roots-bean:nth-child(5),
+  .roots-bean:nth-child(6){left:-20px}
+  .story-grid,.loyalty-grid,.visit-grid,.contact-inner{grid-template-columns:1fr;gap:3rem}
+  .story-intro{grid-template-columns:1fr 1fr}
+  .gallery-grid{grid-template-columns:repeat(3,1fr)}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem}
+}
+
+@media(max-width:720px){
+  .nav-links{
+    position:fixed;top:0;right:0;bottom:0;width:78%;max-width:340px;
+    background:var(--forest);flex-direction:column;justify-content:center;align-items:flex-start;
+    padding:3rem 2.5rem;gap:2rem;
+    transform:translateX(100%);transition:transform 0.5s cubic-bezier(.2,.7,.2,1);
+    box-shadow:-20px 0 60px rgba(0,0,0,0.5);z-index:200;
+  }
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{font-size:1rem;color:var(--cream)}
+  .nav-cta{display:none}
+  .nav-toggle{
+    display:flex;flex-direction:column;gap:5px;cursor:pointer;z-index:201;
+    background:transparent;padding:0.5rem;
+  }
+  .nav-toggle span{width:24px;height:1.5px;background:var(--cream);transition:all 0.3s ease}
+  .nav-toggle.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+  .hero-marquee{display:none}
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{justify-content:center}
+  .story-intro{grid-template-columns:1fr}
+  .gallery-grid{grid-template-columns:repeat(2,1fr)}
+  .gallery-tile:nth-child(3){grid-row:span 1;aspect-ratio:1}
+  .gallery-tile:nth-child(6){grid-column:span 1;aspect-ratio:1}
+  .footer-grid{grid-template-columns:1fr;gap:2.5rem}
+  .drinks-head{flex-direction:column;align-items:flex-start}
+  .cf-row{grid-template-columns:1fr}
+  .cta-banner-btns{flex-direction:column;align-items:center}
+}
+
+@media(max-width:768px){
+  html{scroll-padding-top:86px;scroll-padding-bottom:112px}
+  body{padding-bottom:calc(92px + env(safe-area-inset-bottom))}
+  .nav{
+    padding:0.85rem 0;
+    background:linear-gradient(180deg, rgba(5,12,4,0.88), rgba(5,12,4,0.48) 72%, rgba(5,12,4,0));
+  }
+  .nav.scrolled{
+    padding:0.72rem 0;
+    background:rgba(5,12,4,0.9);
+  }
+  .nav-inner{gap:1rem}
+  .nav-logo{font-size:1rem;gap:0.6rem}
+  .nav-logo img{height:44px!important;width:44px!important}
+  .nav-logo span small{font-size:0.48rem;letter-spacing:0.28em}
+  .nav-links,
+  .nav-links.open,
+  .nav-cta,
+  .nav-toggle{display:none}
+  .mobile-bottom-nav{
+    position:fixed;
+    left:max(0.85rem, env(safe-area-inset-left));
+    right:max(0.85rem, env(safe-area-inset-right));
+    bottom:calc(0.8rem + env(safe-area-inset-bottom));
+    z-index:220;
+    display:grid;
+    grid-template-columns:repeat(5, minmax(0, 1fr));
+    align-items:center;
+    gap:0.1rem;
+    min-height:72px;
+    padding:0.42rem;
+    border:1px solid rgba(201,164,74,0.28);
+    border-radius:999px;
+    background:linear-gradient(135deg, rgba(249,243,232,0.9), rgba(237,224,194,0.76));
+    box-shadow:0 18px 42px rgba(42,18,5,0.22), 0 4px 16px rgba(5,12,4,0.12);
+    backdrop-filter:blur(18px) saturate(1.18);
+    -webkit-backdrop-filter:blur(18px) saturate(1.18);
+  }
+  .mobile-bottom-nav__item{
+    position:relative;
+    min-width:0;
+    min-height:58px;
+    padding:0.45rem 0.24rem 0.38rem;
+    border-radius:999px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:0.18rem;
+    color:rgba(42,18,5,0.62);
+    font-size:0.66rem;
+    line-height:1;
+    font-weight:600;
+    letter-spacing:0.04em;
+    transition:background 0.28s ease,color 0.28s ease,transform 0.28s ease,box-shadow 0.28s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .mobile-bottom-nav__item svg{
+    width:21px;
+    height:21px;
+    stroke-width:1.8;
+    flex:0 0 auto;
+  }
+  .mobile-bottom-nav__item:hover,
+  .mobile-bottom-nav__item:focus-visible{
+    color:var(--espresso);
+    background:rgba(255,255,255,0.34);
+    outline:none;
+  }
+  .mobile-bottom-nav__item.is-active{
+    color:var(--espresso);
+    background:rgba(255,255,255,0.52);
+    box-shadow:inset 0 0 0 1px rgba(201,164,74,0.24);
+  }
+  .mobile-bottom-nav__item--reserve{
+    color:var(--cream);
+    background:linear-gradient(135deg, var(--espresso), #4a260e);
+    box-shadow:0 12px 22px rgba(42,18,5,0.24), inset 0 0 0 1px rgba(224,200,124,0.26);
+  }
+  .mobile-bottom-nav__item--reserve svg{stroke:var(--gold-lt)}
+  .mobile-bottom-nav__item--reserve.is-active,
+  .mobile-bottom-nav__item--reserve:hover,
+  .mobile-bottom-nav__item--reserve:focus-visible{
+    color:var(--cream);
+    background:linear-gradient(135deg, #351707, #5c310f);
+    transform:translateY(-1px);
+  }
+  .wa-float{
+    bottom:calc(6.2rem + env(safe-area-inset-bottom))!important;
+    right:1rem!important;
+    width:46px!important;
+    height:46px!important;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms!important;transition-duration:0.01ms!important}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="assets/logo/rumi_logo.png" alt="Rumi Café logo" style="height:52px;width:52px" />
+      <span>Rumi<small>Café · Est. 2024</small></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="pages/story.html">Story</a></li>
+      <li><a href="pages/drinks.html">Drinks</a></li>
+      <li><a href="pages/roots.html">Our Roots</a></li>
+      <li><a href="pages/menu.html">Menu</a></li>
+      <li><a href="pages/events.html">Events</a></li>
+      <li><a href="pages/contact.html">Contact</a></li>
+    </ul>
+    <a href="pages/contact.html#visit" class="nav-cta">Reserve a Table</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<nav class="mobile-bottom-nav" id="mobileBottomNav" aria-label="Primary mobile navigation">
+  <a class="mobile-bottom-nav__item is-active" href="index.html" data-mobile-section="home" aria-label="Home">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 10.8 12 3l9 7.8"></path>
+      <path d="M5.5 9.2V21h13V9.2"></path>
+      <path d="M9.5 21v-6h5v6"></path>
+    </svg>
+    <span>Home</span>
+  </a>
+  <a class="mobile-bottom-nav__item" href="#menu" data-mobile-section="menu" aria-label="Menu">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M6 8h10v6a5 5 0 0 1-5 5 5 5 0 0 1-5-5Z"></path>
+      <path d="M16 10h2.1a2.4 2.4 0 0 1 0 4.8H16"></path>
+      <path d="M5 21h13"></path>
+      <path d="M8 3v2"></path>
+      <path d="M12 3v2"></path>
+      <path d="M16 3v2"></path>
+    </svg>
+    <span>Menu</span>
+  </a>
+  <a class="mobile-bottom-nav__item" href="#loyalty" data-mobile-section="loyalty" aria-label="Loyalty">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="5" width="18" height="14" rx="3"></rect>
+      <path d="M3 9h18"></path>
+      <path d="m12 12.2.82 1.66 1.83.27-1.33 1.29.32 1.82L12 16.38l-1.64.86.32-1.82-1.33-1.29 1.83-.27Z"></path>
+    </svg>
+    <span>Loyalty</span>
+  </a>
+  <a class="mobile-bottom-nav__item" href="#events" data-mobile-section="events" aria-label="Events">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="4" y="5" width="16" height="16" rx="3"></rect>
+      <path d="M8 3v4"></path>
+      <path d="M16 3v4"></path>
+      <path d="M4 10h16"></path>
+      <path d="M8 14h.01"></path>
+      <path d="M12 14h.01"></path>
+      <path d="M16 14h.01"></path>
+    </svg>
+    <span>Events</span>
+  </a>
+  <a class="mobile-bottom-nav__item mobile-bottom-nav__item--reserve" href="#contact" data-mobile-section="contact" aria-label="Reserve">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M5 11h14"></path>
+      <path d="M7 11v8"></path>
+      <path d="M17 11v8"></path>
+      <path d="M4 19h16"></path>
+      <path d="M9 11V8.5a3 3 0 0 1 6 0V11"></path>
+      <path d="M7 5.5 5 4"></path>
+      <path d="M17 5.5 19 4"></path>
+    </svg>
+    <span>Reserve</span>
+  </a>
+</nav>
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero">
+  <div class="hero-body wrap">
+    <!-- Text -->
+    <div class="hero-text">
+      <span class="eyebrow reveal">A handcrafted café · Nairobi</span>
+      <h1 class="reveal d2">
+        More Than<br>
+        <em>Rare. Rooted.</em>
+      </h1>
+      <p class="hero-sub reveal d3">
+        Slow coffee steeped in African heritage. Every cup carries a lineage — from the highlands of Ethiopia and Kenya to a quiet corner of Nairobi, brewed with intention.
+      </p>
+      <div class="hero-cta reveal d4">
+        <a href="#menu" class="btn btn-gold">Explore Menu <span class="arrow">→</span></a>
+        <a href="#story" class="btn btn-outline-cream">Our Story <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <!-- Visual: African lady with floating beans -->
+    <div class="hero-visual reveal d3">
+      <div class="hero-img-frame">
+        <!-- coffee beans decoration -->
+        <div class="hero-bean"></div>
+        <div class="hero-bean"></div>
+        <div class="hero-bean"></div>
+        <div class="hero-bean"></div>
+        <div class="hero-bean"></div>
+        <img src="assets/images/rumi_cafe_14.webp" alt="The spirit of Rumi Café — culture, warmth, and ceremony" />
+      </div>
+      <!-- 100% Blue Mountains badge (adapted to African origin) -->
+      <div class="hero-badge">
+        <span class="b-pct">100%</span>
+        <span class="b-text">African<br>Origin</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Marquee -->
+  <div class="hero-marquee" aria-hidden="true">
+    <div class="hero-marquee-track">
+      <span>single origin</span><span>slow brewed</span><span>community first</span><span>handcrafted daily</span><span>african heritage</span><span>warm conversations</span>
+      <span>single origin</span><span>slow brewed</span><span>community first</span><span>handcrafted daily</span><span>african heritage</span><span>warm conversations</span>
+    </div>
+  </div>
+</section>
+
+<!-- Mountain wave: dark hero → light story -->
+<div class="divider-dark">
+  <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+    <path d="M0,100 L0,65 Q80,20 180,55 Q260,82 360,35 Q450,0 540,45 Q620,82 720,28 Q800,0 900,50 Q975,88 1080,35 Q1160,0 1260,48 L1360,22 L1440,40 L1440,100 Z" fill="#f9f3e8"/>
+  </svg>
+</div>
+
+<!-- ============================================================
+     STORY — "OUR COFFEE"
+     ============================================================ -->
+<section class="story section-pad" id="story">
+  <div class="wrap">
+    <!-- Three pillars (Wallenford-style icons) -->
+    <div class="section-head reveal" style="text-align:center;margin:0 auto clamp(3rem,6vw,5rem);max-width:600px">
+      <span class="eyebrow" style="color:var(--mocha)">Our</span>
+      <h2 style="color:var(--espresso)">Coffee</h2>
+      <p style="color:#5a3a22;margin:1rem auto 0">In the ancient highlands of East Africa grows the world's finest coffee. Rumi carries that story — small farms, careful hands, generations of knowledge — into every cup.</p>
+    </div>
+
+    <div class="story-intro reveal d2">
+      <div class="story-pillar">
+        <div class="story-pillar-icon">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M28 8 Q20 18 20 28 Q20 40 28 48 Q36 40 36 28 Q36 18 28 8Z" fill="#3a1f0a" opacity="0.15"/>
+            <path d="M8 28 Q18 20 28 20 Q40 20 48 28 Q40 36 28 36 Q18 36 8 28Z" fill="#3a1f0a" opacity="0.1"/>
+            <circle cx="28" cy="28" r="10" fill="#3a1f0a" opacity="0.8"/>
+            <line x1="28" y1="18" x2="28" y2="38" stroke="#3a1f0a" stroke-width="1.5" opacity="0.4"/>
+          </svg>
+        </div>
+        <h4>African Origin</h4>
+        <p>Sourced from smallholder farms across Ethiopia, Kenya, and Rwanda — traded directly, no middlemen.</p>
+      </div>
+      <div class="story-pillar">
+        <div class="story-pillar-icon">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="28" cy="32" rx="18" ry="10" fill="#3a1f0a" opacity="0.12"/>
+            <ellipse cx="28" cy="32" rx="12" ry="7" fill="#3a1f0a" opacity="0.25"/>
+            <path d="M18 25 Q28 10 38 25" stroke="#3a1f0a" stroke-width="2" fill="none" opacity="0.6"/>
+            <circle cx="28" cy="32" r="5" fill="#3a1f0a" opacity="0.7"/>
+          </svg>
+        </div>
+        <h4>Richness &amp; Selection</h4>
+        <p>Each lot is cupped, graded, and selected for complexity — bright, layered, and never bitter.</p>
+      </div>
+      <div class="story-pillar">
+        <div class="story-pillar-icon">
+          <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="20" y="14" width="16" height="28" rx="2" fill="#3a1f0a" opacity="0.15"/>
+            <rect x="22" y="16" width="12" height="24" rx="1" fill="#3a1f0a" opacity="0.2"/>
+            <path d="M26 36 Q28 20 30 36" stroke="#3a1f0a" stroke-width="1.5" fill="none" opacity="0.5"/>
+            <rect x="19" y="40" width="18" height="4" rx="1" fill="#3a1f0a" opacity="0.6"/>
+          </svg>
+        </div>
+        <h4>Handcrafted Brewing</h4>
+        <p>Slow pour-overs, careful espresso pulls, 18-hour cold brews. Every method chosen for the bean.</p>
+      </div>
+    </div>
+
+    <a href="#drinks" class="btn btn-outline-dark reveal" style="margin:0 auto 5rem;display:flex;width:fit-content">
+      Explore Drinks <span class="arrow">→</span>
+    </a>
+
+    <!-- Story narrative -->
+    <div class="story-grid">
+      <div class="story-img reveal">
+        <img src="assets/images/rumi_cafe_15.webp" alt="Africa — where Rumi's coffee story begins" />
+      </div>
+      <div class="story-text reveal d2">
+        <span class="eyebrow">Our Story</span>
+        <h2>Coffee, but <em>slower.</em></h2>
+        <p>Rumi began with a simple wish — to build a corner of the city where people could sit without rushing. Where the coffee is made by someone who cares, the music doesn't fight you, and the chair is the kind you settle into.</p>
+        <p>Every cup carries a lineage. The beans come from the same continent that taught the world how to drink coffee — small farms, careful hands, generations of knowledge. We brew them slowly, on purpose.</p>
+        <p>We believe the most luxurious thing a café can offer isn't a fancy drink — it's the feeling of being unhurried.</p>
+        <span class="story-sig">— the Rumi team<small>Nairobi · Est. 2024</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mountain wave: light story → dark roots -->
+<div class="divider-light">
+  <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+    <path d="M0,100 L0,60 Q90,15 200,50 Q295,80 400,30 Q490,0 580,42 Q660,76 760,22 Q845,0 940,48 Q1020,86 1120,32 Q1210,0 1320,45 L1440,18 L1440,100 Z" fill="#0b1809"/>
+  </svg>
+</div>
+
+<!-- ============================================================
+     THE SPACE — real interior photos
+     ============================================================ -->
+<section class="space-section" id="space">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Space</span>
+      <h2>Built for staying<br><em>a little longer.</em></h2>
+      <p>Warm light, exposed brick, soft leather. A counter where someone will remember how you take it.</p>
+    </div>
+    <div class="space-mosaic reveal d2">
+      <div class="space-tile space-tile--tall">
+        <img src="assets/images/rumi_cafe_07.webp" alt="Rumi Café leather booth seating" loading="lazy" />
+      </div>
+      <div class="space-tile">
+        <img src="assets/images/rumi_cafe_05.webp" alt="Rumi Café bar counter" loading="lazy" />
+      </div>
+      <div class="space-tile">
+        <img src="assets/images/rumi_cafe_11.webp" alt="Rumi Café nature corner" loading="lazy" />
+      </div>
+      <div class="space-tile space-tile--wide">
+        <img src="assets/images/rumi_cafe_06.webp" alt="Rumi Café vintage lounge with African city mural" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     ROOTS — dark "Products" section
+     ============================================================ -->
+<section class="roots section-pad" id="roots">
+  <div class="wrap">
+    <div class="roots-inner">
+      <!-- Text -->
+      <div class="roots-text reveal">
+        <span class="eyebrow">Rooted in Africa</span>
+        <h2 style="font-size:clamp(1.8rem,4vw,3rem)">Where every<br><em>ritual was born.</em></h2>
+        <p>Coffee is not an invention. It is a memory. The first cup was poured in Ethiopia, shared between people sitting close, in no hurry to leave. That impulse — to brew something carefully and offer it generously — is what Rumi carries.</p>
+        <p>Our sourcing runs deep. The beans in your cup come from smallholder farms across East and West Africa, traded directly, roasted lightly, and served in a space that understands where they came from.</p>
+        <p>This is not origin story as marketing. It is obligation, and pleasure, and pride.</p>
+        <span class="roots-sig">— Sourced with care<small>Ethiopia · Kenya · Rwanda</small></span>
+        <a href="#story" class="roots-btn">Read the full story <span class="arrow">→</span></a>
+      </div>
+
+      <!-- Image with floating beans -->
+      <div class="roots-img-wrap reveal d2">
+        <!-- floating bean decorations -->
+        <div class="roots-bean"></div>
+        <div class="roots-bean"></div>
+        <div class="roots-bean"></div>
+        <div class="roots-bean"></div>
+        <div class="roots-bean"></div>
+        <div class="roots-bean"></div>
+        <div class="roots-img-frame">
+          <img src="assets/images/rumi_cafe_06.webp" alt="Rumi Café — vintage lounge and African heritage" />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Mountain wave: dark roots → light drinks -->
+<div style="background:var(--forest);line-height:0">
+  <svg viewBox="0 0 1440 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+    <path d="M0,100 L0,70 Q100,25 220,58 Q310,82 420,35 Q510,0 610,48 Q695,88 800,30 Q885,0 990,52 Q1075,90 1180,38 Q1265,0 1380,50 L1440,30 L1440,100 Z" fill="#f9f3e8"/>
+  </svg>
+</div>
+
+<!-- ============================================================
+     SIGNATURE DRINKS
+     ============================================================ -->
+<section class="drinks section-pad" id="drinks">
+  <div class="wrap">
+    <div class="drinks-head reveal">
+      <div class="section-head">
+        <span class="eyebrow">Our</span>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.8rem);color:var(--espresso)">Signature<br>Drinks</h2>
+        <p style="color:#5a3a22">Six rituals, made with intention. Each drink a small ceremony.</p>
+      </div>
+      <div class="price-note">~ small batch · daily ~</div>
+    </div>
+
+    <div class="drinks-grid reveal d2">
+      <article class="drink">
+        <span class="drink-num">No. 01</span>
+        <h3 class="drink-name">Espresso</h3>
+        <p class="drink-desc">A short, focused pour. House blend, pulled tight and finished with a thick crema.</p>
+        <div class="drink-foot">
+          <span class="drink-price">$3.50</span>
+          <span class="drink-tag">Single Origin</span>
+        </div>
+      </article>
+      <article class="drink">
+        <span class="drink-num">No. 02</span>
+        <h3 class="drink-name">Cappuccino</h3>
+        <p class="drink-desc">Equal parts espresso, steamed milk, and warm foam. Quiet, balanced, classic.</p>
+        <div class="drink-foot">
+          <span class="drink-price">$4.75</span>
+          <span class="drink-tag">Most Loved</span>
+        </div>
+      </article>
+      <article class="drink">
+        <span class="drink-num">No. 03</span>
+        <h3 class="drink-name">Latte</h3>
+        <p class="drink-desc">Soft milk, gentle espresso, a finished tulip on top. The cup you settle in with.</p>
+        <div class="drink-foot">
+          <span class="drink-price">$5.25</span>
+          <span class="drink-tag">House Favourite</span>
+        </div>
+      </article>
+      <article class="drink">
+        <span class="drink-num">No. 04</span>
+        <h3 class="drink-name">Pour Over</h3>
+        <p class="drink-desc">Hand-poured V60 with rotating single-origin beans. Bright, clear, and quietly complex.</p>
+        <div class="drink-foot">
+          <span class="drink-price">$6.00</span>
+          <span class="drink-tag">Slow Brew</span>
+        </div>
+      </article>
+      <article class="drink">
+        <span class="drink-num">No. 05</span>
+        <h3 class="drink-name">Mocha</h3>
+        <p class="drink-desc">House-made dark chocolate folded into espresso and milk. Less sweet than you'd think.</p>
+        <div class="drink-foot">
+          <span class="drink-price">$5.75</span>
+          <span class="drink-tag">Cozy</span>
+        </div>
+      </article>
+      <article class="drink">
+        <span class="drink-num">No. 06</span>
+        <h3 class="drink-name">Cold Brew</h3>
+        <p class="drink-desc">Steeped 18 hours, served over ice. Smooth, low-acid, and refreshing without sweetness.</p>
+        <div class="drink-foot">
+          <span class="drink-price">$5.00</span>
+          <span class="drink-tag">All Day</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GOLD CTA BANNER — "More Than Rare. Unique."
+     ============================================================ -->
+<section class="cta-banner">
+  <div class="wrap cta-banner-inner">
+    <span class="eyebrow reveal">Rumi Café · Nairobi</span>
+    <h2 class="reveal d2" style="font-size:clamp(2.4rem,6vw,4.5rem)">
+      More Than Rare.<br><em>Deeply Rooted.</em>
+    </h2>
+    <p class="reveal d3">Coffee with an intense aroma and the perfect balance of African earth and body.</p>
+    <div class="cta-banner-btns reveal d4">
+      <a href="#visit" class="btn btn-gold">Reserve a Table <span class="arrow">→</span></a>
+      <a href="#menu" class="btn btn-outline-cream">View Full Menu <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MENU PREVIEW
+     ============================================================ -->
+<section class="menu-section" id="menu">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">The Menu</span>
+      <h2>A few things,<br><em>made well.</em></h2>
+    </div>
+
+    <div class="menu-image-wrap reveal d2">
+      <img src="assets/images/rumi_cafe_01.webp" alt="Rumi Cafe Full Menu" class="menu-full-img" />
+    </div>
+
+    <div class="menu-cta reveal">
+      <a href="../../Rumi Cafe Menu/One Page Rumi Cafe.pdf" target="_blank" class="btn btn-gold" style="margin:0 auto">Download Full Menu (PDF) <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- Mountain wave: dark menu → light events -->
+<div style="background:var(--ink);line-height:0">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+    <path d="M0,90 L0,55 Q100,10 230,48 Q330,78 440,28 Q535,0 630,40 Q715,74 820,20 Q910,0 1010,45 Q1095,82 1210,30 Q1300,0 1440,38 L1440,90 Z" fill="#f9f3e8"/>
+  </svg>
+</div>
+
+<!-- ============================================================
+     EVENTS
+     ============================================================ -->
+<section class="events section-pad" id="events">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Community · Events</span>
+      <h2>Things we make<br><em>happen, together.</em></h2>
+      <p>Recurring nights and gatherings designed to slow things down and bring people in. Everyone's welcome — first time or fiftieth.</p>
+    </div>
+
+    <div class="events-grid" id="eventsGrid">
+      <article class="event reveal">
+        <div class="event-date"><span class="day">18</span><span class="month">May · Sat</span></div>
+        <h3 class="event-name">Barista Day</h3>
+        <p class="event-desc">Step behind the bar. Learn to dial in espresso, steam milk, and pour your first tulip.</p>
+        <div class="event-meta"><span>10:00 — 13:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="barista-day" data-event-name="Barista Day">RSVP</button>
+      </article>
+      <article class="event reveal d2">
+        <div class="event-date"><span class="day">22</span><span class="month">May · Wed</span></div>
+        <h3 class="event-name">Book Day</h3>
+        <p class="event-desc">Bring a book. Swap one if you want. Quiet hours, refills, a slow afternoon.</p>
+        <div class="event-meta"><span>14:00 — 18:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="book-day" data-event-name="Book Day">RSVP</button>
+      </article>
+      <article class="event reveal d3">
+        <div class="event-date"><span class="day">25</span><span class="month">May · Sat</span></div>
+        <h3 class="event-name">Open Mic Night</h3>
+        <p class="event-desc">Poetry, acoustic sets, short stories. Sign up at the counter — five minutes each.</p>
+        <div class="event-meta"><span>19:00 — 22:00</span><span>$5 at door</span></div>
+        <button class="event-rsvp-btn" data-event-id="open-mic" data-event-name="Open Mic Night">RSVP</button>
+      </article>
+      <article class="event reveal">
+        <div class="event-date"><span class="day">29</span><span class="month">May · Wed</span></div>
+        <h3 class="event-name">Coffee Tasting</h3>
+        <p class="event-desc">Three single-origin pour overs, side by side. Notes, conversation, no pressure.</p>
+        <div class="event-meta"><span>18:00 — 20:00</span><span>$15</span></div>
+        <button class="event-rsvp-btn" data-event-id="coffee-tasting" data-event-name="Coffee Tasting">RSVP</button>
+      </article>
+      <article class="event reveal d2">
+        <div class="event-date"><span class="day">01</span><span class="month">Jun · Sun</span></div>
+        <h3 class="event-name">Community Day</h3>
+        <p class="event-desc">Free coffee for the neighborhood from 8 to 11. A small thank-you, every first Sunday.</p>
+        <div class="event-meta"><span>08:00 — 11:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="community-day" data-event-name="Community Day">RSVP</button>
+      </article>
+      <article class="event reveal d3">
+        <div class="event-date"><span class="day">05</span><span class="month">Jun · Thu</span></div>
+        <h3 class="event-name">Creative Network</h3>
+        <p class="event-desc">Designers, writers, makers. Casual introductions, slow drinks, real conversation.</p>
+        <div class="event-meta"><span>18:30 — 21:00</span><span>Free</span></div>
+        <button class="event-rsvp-btn" data-event-id="creative-network" data-event-name="Creative Network">RSVP</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALLERY — dark
+     ============================================================ -->
+<section class="gallery" id="gallery">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">@rumicafe123 · Instagram</span>
+      <h2>Quiet moments,<br><em>shared often.</em></h2>
+    </div>
+
+    <div class="gallery-grid reveal d2">
+      <div class="gallery-tile">
+        <img src="assets/images/rumi_cafe_09.webp" alt="Rumi Café latte art close-up" loading="lazy" />
+      </div>
+      <div class="gallery-tile">
+        <img src="assets/images/rumi_cafe_10.webp" alt="Rumi Café glass latte with cookies" loading="lazy" />
+      </div>
+      <div class="gallery-tile">
+        <img src="assets/images/rumi_cafe_08.webp" alt="Two coffees on a table at Rumi Café" loading="lazy" />
+      </div>
+      <div class="gallery-tile">
+        <img src="assets/images/rumi_cafe_04.webp" alt="Rumi Café leather seating interior" loading="lazy" />
+      </div>
+      <div class="gallery-tile">
+        <img src="assets/images/rumi_cafe_07.webp" alt="Rumi Café brick wall dining" loading="lazy" />
+      </div>
+      <div class="gallery-tile">
+        <img src="assets/images/rumi_cafe_13.webp" alt="Tall glass latte at Rumi Café" loading="lazy" />
+      </div>
+      <div class="gallery-tile">
+        <img src="assets/images/rumi_cafe_12.webp" alt="Rumi Café bar and counter" loading="lazy" />
+      </div>
+    </div>
+
+    <p class="gallery-foot reveal">follow along · <a href="https://instagram.com/rumicafe123" target="_blank" rel="noopener">@rumicafe123</a></p>
+  </div>
+</section>
+
+<!-- Mountain wave: dark gallery → dark loyalty (same bg, no divider needed) -->
+
+<!-- ============================================================
+     LOYALTY
+     ============================================================ -->
+<section class="loyalty section-pad" id="loyalty">
+  <div class="wrap loyalty-grid">
+    <div class="loyalty-text reveal">
+      <span class="eyebrow">The Loyalty Card</span>
+      <h2>Stay a regular.<br><em>We'll remember.</em></h2>
+      <p>A quiet, generous rewards system. No app required — just show up, stamp your card, and move through three tiers of perks built for regulars.</p>
+
+      <table class="loyalty-tiers" aria-label="Loyalty tiers">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Threshold</th>
+            <th>Perks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="tier-name">Espresso Tier</td>
+            <td>Join free</td>
+            <td>10th coffee free + birthday pastry</td>
+          </tr>
+          <tr>
+            <td class="tier-name">Mocha Tier</td>
+            <td>10 visits</td>
+            <td>Early event access + community badge</td>
+          </tr>
+          <tr class="tier-gold">
+            <td class="tier-name">Rumi Gold</td>
+            <td>25 visits</td>
+            <td>Priority seating + seasonal menu previews</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <button id="loyaltySignupBtn" class="loyalty-btn" style="margin-top:2.5rem">
+        Join the card — your tenth coffee is already waiting <span class="arrow">→</span>
+      </button>
+    </div>
+
+    <div class="loyalty-card reveal d2">
+      <div class="loyalty-card-head">
+        <img src="assets/logo/rumi_logo.png" alt="" style="filter:none;opacity:0.88" />
+        <small>Member · 2024</small>
+      </div>
+      <div class="loyalty-card-name">Amina K.</div>
+      <div class="loyalty-card-tier">— espresso tier —</div>
+
+      <div class="stamp-grid" aria-label="3 of 10 stamps collected">
+        <span class="stamp" title="Visit 1">☕</span>
+        <span class="stamp" title="Visit 2">☕</span>
+        <span class="stamp" title="Visit 3">☕</span>
+        <span class="stamp stamp--empty" title="Visit 4">☕</span>
+        <span class="stamp stamp--empty" title="Visit 5">☕</span>
+        <span class="stamp stamp--empty" title="Visit 6">☕</span>
+        <span class="stamp stamp--empty" title="Visit 7">☕</span>
+        <span class="stamp stamp--empty" title="Visit 8">☕</span>
+        <span class="stamp stamp--empty" title="Visit 9">☕</span>
+        <span class="stamp stamp--empty stamp--free" title="10th visit — free coffee!">☕</span>
+      </div>
+      <p class="stamp-label">3 of 10 — 7 more until your free coffee</p>
+
+      <div class="loyalty-card-footer" style="margin-top:1.25rem"><span>★☆☆</span><span>card no. 0148</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Mountain wave: dark loyalty → light contact -->
+<div style="background:var(--forest-2);line-height:0">
+  <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%">
+    <path d="M0,90 L0,50 Q110,5 240,45 Q335,75 450,25 Q545,0 645,42 Q730,76 840,22 Q930,0 1040,47 Q1125,85 1240,32 L1440,15 L1440,90 Z" fill="#ede0c2"/>
+  </svg>
+</div>
+
+<!-- ============================================================
+     CONTACT
+     ============================================================ -->
+<section class="contact section-pad" id="contact">
+  <div class="wrap contact-inner">
+    <div class="reveal">
+      <span class="eyebrow">Get in Touch</span>
+      <h2 style="color:var(--espresso);margin-top:0.75rem">Say <em style="font-style:italic;color:var(--mocha)">hello.</em></h2>
+      <p>Whether it's a reservation, a private event, a collaboration, or just a question about the beans — we read everything and write back.</p>
+      <div class="contact-detail">
+        <a href="mailto:rumicafe123@gmail.com">rumicafe123@gmail.com</a>
+        <a href="tel:+254703426695">+254 703 426 695</a>
+        <a href="#visit">Titan Complex, Ground Mall, Kilimani, Nairobi</a>
+      </div>
+    </div>
+
+    <form class="contact-form reveal d2" id="contactForm" novalidate>
+      <div class="cf-row">
+        <div class="cf-field">
+          <label for="cf-name">Name</label>
+          <input type="text" id="cf-name" name="name" placeholder="Your name" required />
+        </div>
+        <div class="cf-field">
+          <label for="cf-email">Email</label>
+          <input type="email" id="cf-email" name="email" placeholder="you@example.com" required />
+        </div>
+      </div>
+      <div class="cf-field">
+        <label for="cf-type">What's this about?</label>
+        <select id="cf-type" name="type">
+          <option value="General">General question</option>
+          <option value="Reservation">Reservation</option>
+          <option value="Private Event">Private event</option>
+          <option value="Wholesale">Wholesale / beans</option>
+          <option value="Press">Press / collaboration</option>
+          <option value="Other">Something else</option>
+        </select>
+      </div>
+      <div class="cf-field">
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" name="message" placeholder="Write anything — we'll read it carefully." required></textarea>
+      </div>
+      <button type="submit" class="btn btn-gold" style="align-self:flex-start">Send message <span class="arrow">→</span></button>
+      <p id="contactMsg"></p>
+    </form>
+  </div>
+</section>
+
+<!-- ============================================================
+     VISIT
+     ============================================================ -->
+<section class="visit section-pad" id="visit">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Visit Us</span>
+      <h2 style="color:var(--espresso)">Come <em style="font-style:italic;color:var(--mocha)">sit a while.</em></h2>
+    </div>
+
+    <div class="visit-grid">
+      <div class="visit-info reveal">
+        <div class="visit-block">
+          <span class="eyebrow" style="color:var(--mocha)">Location</span>
+          <h3>Titan Complex, Ground Mall</h3>
+          <p>Kilimani, off Chaka Road, Nairobi<br></p>
+        </div>
+        <div class="visit-block">
+          <span class="eyebrow" style="color:var(--mocha)">Hours</span>
+          <dl class="visit-hours" style="margin-top:0.75rem">
+            <dt>Mon — Thu</dt><dd>7:00 — 19:00</dd>
+            <dt>Friday</dt><dd>7:00 — 21:00</dd>
+            <dt>Saturday</dt><dd>8:00 — 21:00</dd>
+            <dt>Sunday</dt><dd>8:00 — 17:00</dd>
+          </dl>
+        </div>
+        <div class="visit-block">
+          <span class="eyebrow" style="color:var(--mocha)">Reach Out</span>
+          <div class="visit-socials" style="margin-top:0.75rem">
+            <a href="https://instagram.com/rumicafe123" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://facebook.com/rumicafe" target="_blank" rel="noopener">Facebook</a>
+            <a href="https://wa.me/254703426695" target="_blank" rel="noopener">WhatsApp</a>
+            <a href="https://maps.google.com/?q=Titan+Complex+Kilimani+Nairobi" target="_blank" rel="noopener">Google Maps</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="visit-map reveal d2">
+        <svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%">
+          <rect width="400" height="400" fill="#d4c4a0"/>
+          <rect x="0" y="0" width="180" height="160" fill="#c4b48a"/>
+          <rect x="240" y="240" width="160" height="160" fill="#cabb90"/>
+          <rect x="180" y="0" width="40" height="400" fill="#ede0c2"/>
+          <rect x="0" y="180" width="400" height="40" fill="#ede0c2"/>
+          <line x1="200" y1="0" x2="200" y2="400" stroke="#a08a60" stroke-width="1" stroke-dasharray="8 8"/>
+          <line x1="0" y1="200" x2="400" y2="200" stroke="#a08a60" stroke-width="1" stroke-dasharray="8 8"/>
+          <rect x="20" y="20" width="50" height="50" fill="#8a6020" opacity="0.4" rx="2"/>
+          <rect x="100" y="30" width="60" height="40" fill="#6a4a18" opacity="0.4" rx="2"/>
+          <rect x="240" y="20" width="50" height="60" fill="#8a6020" opacity="0.4" rx="2"/>
+          <rect x="40" y="240" width="60" height="50" fill="#8a6020" opacity="0.4" rx="2"/>
+          <rect x="260" y="260" width="60" height="40" fill="#6a4a18" opacity="0.4" rx="2"/>
+        </svg>
+        <div class="visit-map-pin">
+          <div class="pin"></div>
+          <div class="visit-map-label">Rumi Café · here</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img src="assets/logo.png" alt="Rumi Café" onerror="this.style.display='none'" />
+      <p>A handcrafted café experience rooted in African heritage and the culture of slow coffee.</p>
+    </div>
+    <div>
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#roots">African Roots</a></li>
+        <li><a href="#drinks">Drinks</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#events">Events</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Community</h4>
+      <ul>
+        <li><a href="#loyalty">Loyalty Card</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#">Newsletter</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Visit</h4>
+      <ul>
+        <li>Titan Complex, Ground Mall</li>
+        <li>Kilimani, off Chaka Road, Nairobi</li>
+        <li><a href="mailto:rumicafe123@gmail.com">rumicafe123@gmail.com</a></li>
+        <li><a href="tel:+254703426695">+254 703 426 695</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    <span>© 2026 Rumi Café · All rights reserved</span>
+    <em>made slowly, with care</em>
+  </div>
+</footer>
+
+<!-- LOYALTY MODAL -->
+<div class="modal-overlay" id="loyaltyModal" role="dialog" aria-modal="true" aria-label="Join the Rumi loyalty card">
+  <div class="modal-box">
+    <button class="modal-close" id="loyaltyModalClose" aria-label="Close">✕</button>
+    <p class="modal-eyebrow">The Loyalty Card</p>
+    <h2 class="modal-title">Join the card.</h2>
+    <p class="modal-sub">Stamp your way to free coffee, priority seating, and seasonal previews. Starts the moment you walk in.</p>
+    <form class="modal-form" id="loyaltyForm" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+      <div class="cf-field">
+        <label for="lf-name">Full name</label>
+        <input type="text" id="lf-name" name="name" placeholder="Your name" required />
+      </div>
+      <div class="cf-field">
+        <label for="lf-email">Email</label>
+        <input type="email" id="lf-email" name="email" placeholder="you@example.com" required />
+      </div>
+      <div class="cf-field">
+        <label for="lf-phone">Phone (optional)</label>
+        <input type="tel" id="lf-phone" name="phone" placeholder="+254 …" />
+      </div>
+      <div class="cf-field">
+        <label for="lf-birthday">Birthday month (for pastry)</label>
+        <select id="lf-birthday" name="birthdayMonth">
+          <option value="">— choose a month —</option>
+          <option>January</option><option>February</option><option>March</option>
+          <option>April</option><option>May</option><option>June</option>
+          <option>July</option><option>August</option><option>September</option>
+          <option>October</option><option>November</option><option>December</option>
+        </select>
+      </div>
+      <button type="submit" class="modal-submit">Join the card →</button>
+      <p class="modal-note" id="loyaltyNote"></p>
+    </form>
+    <div class="loyalty-success" id="loyaltySuccess">
+      <p class="loyalty-success__msg"></p>
+      <a href="https://wa.me/254703426695?text=Hi+Rumi+Café,+I+just+joined+the+loyalty+card"
+         target="_blank" rel="noopener" class="loyalty-success__wa">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+        </svg>
+        Let us know you joined →
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- RSVP MODAL -->
+<div class="modal-overlay" id="rsvpModal" role="dialog" aria-modal="true" aria-label="RSVP for event">
+  <div class="modal-box">
+    <button class="modal-close" id="rsvpModalClose" aria-label="Close">✕</button>
+    <p class="modal-eyebrow">Reserve your spot</p>
+    <h2 class="modal-title" id="rsvpEventName">Event</h2>
+    <p class="modal-sub">We'll hold a place for you. See you there.</p>
+    <form class="modal-form" id="rsvpForm" novalidate>
+      <input type="hidden" id="rsvp-event-id" name="eventId" />
+      <div class="cf-field">
+        <label for="rsvp-name">Your name</label>
+        <input type="text" id="rsvp-name" name="name" placeholder="Your name" required />
+      </div>
+      <div class="cf-field">
+        <label for="rsvp-email">Email</label>
+        <input type="email" id="rsvp-email" name="email" placeholder="you@example.com" required />
+      </div>
+      <button type="submit" class="modal-submit">Confirm RSVP →</button>
+      <p class="modal-note" id="rsvpNote"></p>
+    </form>
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   API — reads URL from localStorage (set via admin portal)
+   ============================================================ */
+const RUMI_API = () => localStorage.getItem('rumiUrl') || '';
+const isApiReady = () => RUMI_API() !== '';
+
+async function apiPost(body) {
+  if (!isApiReady()) return null;
+  try {
+    const res = await fetch(RUMI_API(), { method: 'POST', body: JSON.stringify(body) });
+    return await res.json();
+  } catch (e) { return null; }
+}
+
+/* ============================================================
+   Nav: scroll state + mobile toggle
+   ============================================================ */
+(function(){
+  const nav = document.getElementById('nav');
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+
+  const onScroll = () => {
+    if (window.scrollY > 40) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  toggle.addEventListener('click', () => {
+    toggle.classList.toggle('open');
+    links.classList.toggle('open');
+  });
+
+  links.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      toggle.classList.remove('open');
+      links.classList.remove('open');
+    });
+  });
+
+  const mobileNav = document.getElementById('mobileBottomNav');
+  const mobileItems = mobileNav ? Array.from(mobileNav.querySelectorAll('[data-mobile-section]')) : [];
+  const mobileSections = [
+    { id: 'home', el: document.querySelector('.hero') },
+    { id: 'menu', el: document.getElementById('menu') },
+    { id: 'events', el: document.getElementById('events') },
+    { id: 'loyalty', el: document.getElementById('loyalty') },
+    { id: 'contact', el: document.getElementById('contact') }
+  ].filter(section => section.el);
+
+  const setMobileActive = (id) => {
+    mobileItems.forEach(item => {
+      const isActive = item.dataset.mobileSection === id;
+      item.classList.toggle('is-active', isActive);
+      if (isActive) item.setAttribute('aria-current', 'page');
+      else item.removeAttribute('aria-current');
+    });
+  };
+
+  const updateMobileActive = () => {
+    if (!mobileItems.length || window.innerWidth > 768) return;
+    const anchor = window.scrollY + Math.min(window.innerHeight * 0.48, 380);
+    let current = 'home';
+
+    mobileSections.forEach(section => {
+      if (section.el.offsetTop <= anchor) current = section.id;
+    });
+
+    if ((window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 18) {
+      current = 'contact';
+    }
+
+    setMobileActive(current);
+  };
+
+  mobileItems.forEach(item => {
+    item.addEventListener('click', () => setMobileActive(item.dataset.mobileSection));
+  });
+
+  window.addEventListener('scroll', updateMobileActive, { passive: true });
+  window.addEventListener('resize', updateMobileActive);
+  window.addEventListener('load', () => {
+    if (!window.location.hash) {
+      updateMobileActive();
+      return;
+    }
+
+    const target = document.getElementById(window.location.hash.slice(1));
+    if (!target) {
+      updateMobileActive();
+      return;
+    }
+
+    window.setTimeout(() => {
+      target.scrollIntoView();
+      updateMobileActive();
+    }, 80);
+  });
+  updateMobileActive();
+})();
+
+/* ============================================================
+   Reveal on scroll
+   ============================================================ */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(el => el.classList.add('in'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(el => io.observe(el));
+})();
+
+/* ============================================================
+   Modal helpers
+   ============================================================ */
+function openModal(overlay) { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeModal(overlay) { overlay.classList.remove('open'); document.body.style.overflow = ''; }
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(overlay); });
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(closeModal);
+});
+
+/* ============================================================
+   Loyalty modal — Formspree
+   ============================================================ */
+(function(){
+  const overlay  = document.getElementById('loyaltyModal');
+  const form     = document.getElementById('loyaltyForm');
+  const success  = document.getElementById('loyaltySuccess');
+  const note     = document.getElementById('loyaltyNote');
+
+  document.getElementById('loyaltySignupBtn').addEventListener('click', () => {
+    form.style.display = '';
+    success.style.display = 'none';
+    form.reset();
+    note.textContent = '';
+    openModal(overlay);
+  });
+  document.getElementById('loyaltyModalClose').addEventListener('click', () => closeModal(overlay));
+
+  form.addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const btn  = this.querySelector('.modal-submit');
+    const name = document.getElementById('lf-name').value.trim();
+    const email= document.getElementById('lf-email').value.trim();
+    if (!name || !email) { note.textContent = 'Please fill in your name and email.'; return; }
+
+    btn.disabled = true;
+    btn.textContent = 'One moment…';
+
+    try {
+      const res = await fetch(this.action, {
+        method: 'POST',
+        body: new FormData(this),
+        headers: { 'Accept': 'application/json' }
+      });
+      if (res.ok) {
+        form.style.display = 'none';
+        success.querySelector('.loyalty-success__msg').textContent =
+          'You\'re in, ' + name.split(' ')[0] + '. Your card is being prepared — we\'ll see you soon.';
+        success.style.display = 'block';
+      } else {
+        note.textContent = 'Something went wrong. Please try again or email rumicafe123@gmail.com';
+        btn.disabled = false;
+        btn.textContent = 'Join the card →';
+      }
+    } catch(_) {
+      note.textContent = 'Connection error — please email rumicafe123@gmail.com';
+      btn.disabled = false;
+      btn.textContent = 'Join the card →';
+    }
+  });
+})();
+
+/* ============================================================
+   RSVP modal
+   ============================================================ */
+(function(){
+  const overlay = document.getElementById('rsvpModal');
+  document.getElementById('rsvpModalClose').addEventListener('click', () => closeModal(overlay));
+
+  document.querySelectorAll('.event-rsvp-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.getElementById('rsvp-event-id').value = btn.dataset.eventId;
+      document.getElementById('rsvpEventName').textContent = btn.dataset.eventName;
+      document.getElementById('rsvpNote').textContent = '';
+      openModal(overlay);
+    });
+  });
+
+  document.getElementById('rsvpForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const note = document.getElementById('rsvpNote');
+    const btn = this.querySelector('.modal-submit');
+    const name = document.getElementById('rsvp-name').value.trim();
+    const email = document.getElementById('rsvp-email').value.trim();
+    const eventId = document.getElementById('rsvp-event-id').value;
+    if (!name || !email) { note.textContent = 'Please fill in your name and email.'; return; }
+    btn.disabled = true; btn.textContent = 'Confirming…';
+    if (isApiReady()) {
+      const result = await apiPost({ action:'rsvpEvent', eventId, name, email });
+      if (result && !result.error) {
+        note.textContent = 'You\'re in, ' + name.split(' ')[0] + '. We\'ll see you there.';
+        this.querySelectorAll('input').forEach(el => { if (el.type !== 'hidden') el.value = ''; });
+        setTimeout(() => closeModal(overlay), 2500);
+      } else {
+        note.textContent = result?.message || 'Something went wrong. Email us at rumicafe123@gmail.com.';
+        btn.disabled = false; btn.textContent = 'Confirm RSVP →';
+      }
+    } else {
+      note.textContent = 'Got it, ' + name.split(' ')[0] + '. We\'ll save your spot — see you there.';
+      this.querySelectorAll('input').forEach(el => { if (el.type !== 'hidden') el.value = ''; });
+      setTimeout(() => closeModal(overlay), 2500);
+    }
+  });
+})();
+
+/* ============================================================
+   Contact form
+   ============================================================ */
+(function(){
+  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const msg = document.getElementById('contactMsg');
+    const btn = this.querySelector('button[type=submit]');
+    const name = document.getElementById('cf-name').value.trim();
+    const email = document.getElementById('cf-email').value.trim();
+    const message = document.getElementById('cf-message').value.trim();
+    if (!name || !email || !message) { msg.textContent = 'Please fill in all required fields.'; return; }
+    btn.disabled = true; btn.textContent = 'Sending…';
+    if (isApiReady()) {
+      const result = await apiPost({ action:'createSubmission', name, email,
+        type: document.getElementById('cf-type').value, message });
+      if (result && !result.error) {
+        msg.textContent = 'Message received. We\'ll write back soon, ' + name.split(' ')[0] + '.';
+        this.reset();
+      } else {
+        msg.textContent = 'Something went wrong. Email us directly at rumicafe123@gmail.com.';
+        btn.disabled = false;
+        btn.innerHTML = 'Send message <span class="arrow">→</span>';
+        return;
+      }
+    } else {
+      msg.textContent = 'Message noted. We\'ll be in touch soon, ' + name.split(' ')[0] + '.';
+      this.reset();
+    }
+    btn.disabled = false;
+    btn.innerHTML = 'Send message <span class="arrow">→</span>';
+  });
+})();
+</script>
+
+
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/254703426695" class="wa-float" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">
+  <span class="wa-float__tip">Chat with us on WhatsApp</span>
+  <span class="wa-float__pulse" aria-hidden="true"></span>
+  <svg class="wa-float__icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+</body>
+</html>
